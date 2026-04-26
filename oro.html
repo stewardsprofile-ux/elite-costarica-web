@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ELITE COSTA RICA - ORO 10K</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .btn-regresar { position: absolute; top: 20px; left: 20px; background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 12px; font-weight: 600; text-transform: uppercase; transition: all 0.3s ease; z-index: 10; max-width: 220px; line-height: 1.2; }
+        .btn-regresar:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; border-color: rgba(255, 255, 255, 0.3); }
+        .titulo-oro { color: #ffffff !important; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; margin-top: 20px; }
+        
+        /* Estilos de botones activos para todas las categorías de filtro */
+        .tipo-oro.active, .gen-oro.active, .cat-oro.active { 
+            background: #E6C200 !important; 
+            color: #10171f !important; 
+            border-color: #E6C200 !important; 
+            box-shadow: 0 0 15px rgba(230, 194, 0, 0.4); 
+        }
+
+        .filtros-principales button { border: 1px solid rgba(230, 194, 0, 0.3); transition: all 0.3s ease; cursor: pointer; border-radius: 20px; padding: 8px 15px; background: transparent; color: white; margin: 3px; font-size: 13px; }
+        .btn-testimonios-oro {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 18px;
+            padding: 12px 26px;
+            border-radius: 999px;
+            border: 1px solid rgba(230, 194, 0, 0.38);
+            background: #10171f;
+            color: #E6C200;
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: none;
+            backdrop-filter: blur(10px);
+        }
+        .btn-testimonios-oro:hover { background: rgba(230, 194, 0, 0.08); }
+        header { position: relative; text-align: center; padding: 40px 10px; }
+
+        /* Catalogo en grid amplio */
+        #catalogo-oro {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            padding: 20px 40px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card-oro-full {
+            background: #161d26;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+
+        .header-card-oro {
+            background: #1a212b;
+            color: #E6C200;
+            text-align: center;
+            padding: 12px 14px;
+            font-size: 0.82em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .card-oro-full img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #161d26;
+            display: block;
+            cursor: pointer;
+        }
+
+        .info-card-oro {
+            padding: 14px 20px 20px;
+            margin-top: auto;
+        }
+
+        .btn-cotizar-oro-full {
+            background: rgba(230, 194, 0, 0.12);
+            color: #E6C200;
+            border: 1px solid rgba(230, 194, 0, 0.32);
+            backdrop-filter: blur(10px);
+            padding: 16px;
+            border-radius: 14px;
+            font-weight: 800;
+            width: 100%;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-cotizar-oro-full:hover {
+            background: rgba(230, 194, 0, 0.18);
+        }
+
+        @media (max-width: 1100px) {
+            #catalogo-oro { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 20px; }
+        }
+
+        @media (max-width: 640px) {
+            #catalogo-oro { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
+            header { padding: 22px 10px 16px; }
+            .btn-regresar { top: 14px; left: 14px; padding: 7px 10px; max-width: 152px; font-size: 10px; white-space: normal; text-align: left; line-height: 1.15; }
+            .logo { margin-bottom: 6px !important; }
+            .titulo-oro { margin: 8px 0 16px 0 !important; }
+            .filtros-principales { gap: 6px !important; margin-bottom: 8px !important; }
+            .filtros-principales[style] { margin-top: 0 !important; }
+            .filtros-principales button { margin: 1px; padding: 7px 10px; font-size: 12px; }
+            .row-tipo-oro {
+                display: flex !important;
+                justify-content: center !important;
+                flex-wrap: nowrap !important;
+                gap: 8px !important;
+                width: 100%;
+                overflow-x: auto;
+            }
+            .row-tipo-oro button {
+                flex: 0 0 auto;
+                width: auto !important;
+                min-width: auto !important;
+                max-width: none !important;
+                white-space: nowrap !important;
+                word-break: keep-all !important;
+                overflow-wrap: normal !important;
+                line-height: 1 !important;
+                padding: 8px 11px !important;
+                font-size: 10px !important;
+            }
+            .row-categorias-oro {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                align-items: center;
+            }
+            .row-categorias-oro button {
+                width: 100%;
+                min-width: 0;
+                padding: 7px 4px;
+                font-size: 10px;
+            }
+            .row-especiales-oro {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                align-items: center;
+            }
+            .row-especiales-oro button {
+                width: 100%;
+                min-width: 0;
+                padding: 7px 6px;
+                font-size: 11px;
+            }
+            .btn-testimonios-oro { margin-top: 4px; padding: 10px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="btn-regresar">← Catalogo de Perfumes</a>
+    <img class="logo" src="assets/logo.png" alt="Elite Gold" style="width: 80px;">
+    <h1 class="titulo titulo-oro">ELITE COSTA RICA</h1>
+
+    <div class="filtros-principales row-tipo-oro">
+        <button class="tipo-oro active" data-val="Todos" onclick="filtrarTipo('Todos')">Todos</button>
+        <button class="tipo-oro" data-val="Oro Nacional" onclick="filtrarTipo('Oro Nacional')">Oro Nacional</button>
+        <button class="tipo-oro" data-val="Oro Italiano" onclick="filtrarTipo('Oro Italiano')">Oro Italiano</button>
+    </div>
+
+    <div class="filtros-principales row-genero-oro" style="margin-top: 10px;">
+        <button class="gen-oro active" data-val="Todos" onclick="filtrarGenero('Todos')">Todos</button>
+        <button class="gen-oro" data-val="Hombre" onclick="filtrarGenero('Hombre')">Hombre</button>
+        <button class="gen-oro" data-val="Mujer" onclick="filtrarGenero('Mujer')">Mujer</button>
+        <button class="gen-oro" data-val="Niños" onclick="filtrarGenero('Niños')">Niños</button>
+    </div>
+
+    <div class="filtros-principales row-categorias-oro" style="margin-top: 10px;">
+        <button class="cat-oro" data-val="Cadenas" onclick="filtrarCat('Cadenas')">Cadenas</button>
+        <button class="cat-oro" data-val="Pulseras" onclick="filtrarCat('Pulseras')">Pulseras</button>
+        <button class="cat-oro" data-val="Anillos" onclick="filtrarCat('Anillos')">Anillos</button>
+        <button class="cat-oro" data-val="Argollas" onclick="filtrarCat('Argollas')">Argollas</button>
+        <button class="cat-oro" data-val="Aretes" onclick="filtrarCat('Aretes')">Aretes</button>
+    </div>
+
+    <div class="filtros-principales row-especiales-oro" style="margin-top: 10px;">
+        <button class="cat-oro-especial" data-val="Graduacion" onclick="filtrarCatEspecial('Graduacion')">Graduacion</button>
+        <button class="cat-oro-especial" data-val="15 Años" onclick="filtrarCatEspecial('15 Años')">15 Años</button>
+        <button class="cat-oro-especial" data-val="Matrimonio" onclick="filtrarCatEspecial('Matrimonio')">Matrimonio</button>
+    </div>
+
+    <a href="/testimonios" class="btn-testimonios-oro">testimonios</a>
+</header>
+
+<div id="catalogo-oro">
+    <p id="loaderOro" style="color: white; text-align: center;">Cargando colección...</p>
+</div>
+
+<div id="visorImagen" onclick="this.style.display='none'" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center;">
+    <img id="imagenGrande" src="" style="max-width:95%; max-height:95%; border: 2px solid #E6C200; border-radius: 10px;">
+</div>
+
+<button id="btnArribaOro" title="Ir arriba" style="display:none; position:fixed; right:25px; bottom:25px; width:52px; height:52px; border-radius:50%; border:1px solid rgba(230, 194, 0, 0.34); background:rgba(230, 194, 0, 0.14); color:#E6C200; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); box-shadow:0 10px 30px rgba(0,0,0,0.28); font-size:20px; font-weight:800; cursor:pointer; z-index:1001;">↑</button>
+
+<script src="script_oro.js" defer></script>
+</body>
+</html>

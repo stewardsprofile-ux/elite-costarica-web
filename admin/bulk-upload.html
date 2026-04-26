@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carga Masiva | Elite Admin</title>
+  <style>
+    :root {
+      --bg: #0e141b;
+      --panel: #16202b;
+      --panel-2: #1d2a36;
+      --text: #f5f7fa;
+      --muted: #a7b2bd;
+      --line: rgba(255,255,255,.08);
+      --accent: #f3f4f6;
+      --accent-text: #10171f;
+      --ok: rgba(31,122,67,.18);
+      --ok-line: rgba(31,122,67,.45);
+      --bad: rgba(160,51,51,.18);
+      --bad-line: rgba(160,51,51,.45);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #1d2b38 0%, #0e141b 55%);
+      color: var(--text);
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .topbar a {
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(255,255,255,.08);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr .9fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: rgba(14, 20, 27, .88);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.25);
+      backdrop-filter: blur(8px);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: 34px; line-height: 1.05; margin-bottom: 12px; }
+    h2 { font-size: 20px; margin-bottom: 16px; }
+    p { color: var(--muted); line-height: 1.5; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #d8e0e8;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+      color: var(--text);
+      padding: 14px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    textarea { min-height: 96px; resize: vertical; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: var(--accent-text);
+    }
+
+    .secondary {
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .status {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--panel-2);
+      color: var(--text);
+      display: none;
+      white-space: pre-line;
+      line-height: 1.45;
+    }
+
+    .status.success {
+      background: var(--ok);
+      border: 1px solid var(--ok-line);
+    }
+
+    .status.error {
+      background: var(--bad);
+      border: 1px solid var(--bad-line);
+    }
+
+    .queue-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .queue {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+      max-height: 460px;
+      overflow: auto;
+      padding-right: 6px;
+    }
+
+    .file-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 14px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+    }
+
+    .file-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #f3f4f6;
+      cursor: pointer;
+    }
+
+    .file-name {
+      font-size: 14px;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .file-size,
+    .file-tag {
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .file-tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+    }
+
+    .tips {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tip {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .inline-note {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .existing-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mini-input {
+      min-width: 220px;
+      flex: 1 1 260px;
+    }
+
+    .selection-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .selection-grid input {
+      min-width: 0;
+    }
+
+    .manager-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .manager-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      background: var(--panel);
+    }
+
+    .gallery-meta {
+      padding: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      word-break: break-word;
+      line-height: 1.45;
+    }
+
+    .delete-chip {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(160,51,51,.9);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    .empty-state {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px dashed var(--line);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .file-row { grid-template-columns: auto 1fr; }
+      .selection-grid { grid-template-columns: 1fr 1fr; }
+      .manager-grid { grid-template-columns: 1fr 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <h2>Carga Masiva de Imagenes</h2>
+      <a href="/admin/index.html">Volver al admin</a>
+    </div>
+
+    <div class="hero">
+      <section class="card">
+        <h1>Sube y actualiza lotes sin depender del modal de Decap</h1>
+        <p>Esta pantalla sube archivos directo a GitHub dentro de <code>assets/images</code> y, si quieres, actualiza automáticamente el JSON del lote de oro correspondiente.</p>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="owner">Usuario / owner</label>
+            <input id="owner" value="stewardsprofile-ux" />
+          </div>
+          <div class="field">
+            <label for="repo">Repositorio</label>
+            <input id="repo" value="elite-catalogo" />
+          </div>
+          <div class="field">
+            <label for="branch">Branch</label>
+            <input id="branch" value="main" />
+          </div>
+          <div class="field">
+            <label for="folder">Carpeta destino</label>
+            <input id="folder" value="assets/images" />
+          </div>
+          <div class="field">
+            <label for="prefix">Prefijo de lote</label>
+            <input id="prefix" placeholder="Ej: hombre-cadenas-oro-italiano" />
+          </div>
+          <div class="field">
+            <label for="start-number">Empezar en</label>
+            <input id="start-number" type="number" min="1" value="1" />
+          </div>
+          <div class="field full">
+            <label for="token">GitHub token</label>
+            <input id="token" type="password" placeholder="Si Decap no deja reutilizar la sesion, pega aqui un token con permiso de escritura" />
+          </div>
+          <div class="field full">
+            <label for="message">Mensaje de commit</label>
+            <textarea id="message">Carga masiva de imagenes desde Elite Admin</textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="pick-files">Elegir muchas imagenes</button>
+          <button class="secondary" id="pick-folder">Elegir carpeta</button>
+          <button class="secondary" id="clear-files">Limpiar lista</button>
+        </div>
+
+        <div class="existing-tools">
+          <input class="mini-input" id="existing-filter" placeholder="Filtrar archivos existentes por texto, por ejemplo cadenas o hombre" />
+          <button class="secondary" id="load-existing">Cargar existentes de assets</button>
+          <button class="secondary" id="append-existing">Agregar existentes a la cola</button>
+        </div>
+
+        <div class="status" id="status"></div>
+      </section>
+
+      <aside class="card">
+        <h2>Actualizar lote de oro</h2>
+        <p>Si activas esta parte, además de subir las imágenes se escriben automáticamente en el archivo JSON correcto para que el lote quede actualizado sin seleccionar una por una.</p>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="genero">Genero</label>
+            <select id="genero">
+              <option>Hombre</option>
+              <option>Mujer</option>
+              <option>Niños</option>
+              <option>Unisex</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="categoria">Categoria</label>
+            <select id="categoria">
+              <option>Cadenas</option>
+              <option>Pulseras</option>
+              <option>Anillos</option>
+              <option>Argollas</option>
+              <option>Aretes</option>
+              <option>Graduacion</option>
+              <option>15 Años</option>
+              <option>Matrimonio</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="tipo-oro">Tipo de oro</label>
+            <select id="tipo-oro">
+              <option>Oro Nacional</option>
+              <option>Oro Italiano</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="modo-json">Accion</label>
+            <select id="modo-json">
+              <option value="append">Subir y agregar al lote</option>
+              <option value="upload-only">Solo subir imagenes</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="json-path">Archivo JSON destino</label>
+            <input id="json-path" value="assets/data/oro-lotes/hombre-cadenas.json" />
+            <div class="inline-note">Se autocompleta con genero + categoria, pero puedes ajustarlo manualmente si hace falta.</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="upload-selected">Subir seleccionadas</button>
+          <button class="secondary" id="select-all">Seleccionar todo</button>
+          <button class="secondary" id="clear-selection">Deseleccionar todo</button>
+        </div>
+      </aside>
+    </div>
+
+    <section class="card">
+      <h2>Archivos en cola</h2>
+      <p id="summary">No has seleccionado archivos todavia.</p>
+
+      <div class="queue-toolbar">
+        <button class="secondary" id="mark-all">Seleccionar todo</button>
+        <button class="secondary" id="mark-none">Deseleccionar todo</button>
+        <button class="secondary" id="mark-images">Seleccionar visibles</button>
+      </div>
+
+      <div class="selection-grid">
+        <div class="field">
+          <label for="selection-filter">Seleccionar por texto</label>
+          <input id="selection-filter" placeholder="Ej: cadenas, foto_24, hombre" />
+        </div>
+        <div class="field">
+          <label for="selection-start">Desde</label>
+          <input id="selection-start" type="number" min="1" placeholder="1" />
+        </div>
+        <div class="field">
+          <label for="selection-count">Cantidad</label>
+          <input id="selection-count" type="number" min="1" placeholder="3" />
+        </div>
+        <div class="field">
+          <label>&nbsp;</label>
+          <button class="secondary" id="select-range">Seleccionar bloque</button>
+        </div>
+      </div>
+
+      <div class="queue" id="queue"></div>
+    </section>
+
+    <section class="card" style="margin-top: 24px;">
+      <h2>Gestor Seguro del Lote</h2>
+      <p>Carga un lote existente, revisa sus imágenes y usa la <code>X</code> para quitar una pieza del catálogo. El borrado es seguro: solo elimina el asset físico si no está referenciado en ningún otro registro.</p>
+
+      <div class="manager-grid">
+        <div class="field">
+          <label for="manage-genero">Genero</label>
+          <select id="manage-genero">
+            <option>Hombre</option>
+            <option>Mujer</option>
+            <option>Niños</option>
+            <option>Unisex</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="manage-categoria">Categoria</label>
+          <select id="manage-categoria">
+            <option>Cadenas</option>
+            <option>Pulseras</option>
+            <option>Anillos</option>
+            <option>Argollas</option>
+            <option>Aretes</option>
+            <option>Graduacion</option>
+            <option>15 Años</option>
+            <option>Matrimonio</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="manage-tipo">Tipo de oro</label>
+          <select id="manage-tipo">
+            <option>Oro Nacional</option>
+            <option>Oro Italiano</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="manage-json-path">Archivo JSON</label>
+          <input id="manage-json-path" value="assets/data/oro-lotes/hombre-cadenas.json" />
+        </div>
+      </div>
+
+      <div class="manager-actions">
+        <button class="primary" id="load-lote">Cargar lote</button>
+        <button class="secondary" id="refresh-lote">Refrescar</button>
+      </div>
+
+      <div class="status" id="manager-status"></div>
+      <div class="gallery" id="gallery"></div>
+      <div class="empty-state" id="gallery-empty">Todavía no has cargado un lote.</div>
+    </section>
+
+    <section class="card" style="margin-top: 24px;">
+      <h2>Testimonios por Año</h2>
+      <p>Usa la misma cola de archivos para subir testimonios a un año específico. Las imágenes se guardan en <code>assets/testimonios/AÑO</code> y se agregan al JSON <code>assets/data/testimonios/AÑO.json</code>.</p>
+
+      <div class="manager-grid">
+        <div class="field">
+          <label for="testimonios-year">Año</label>
+          <select id="testimonios-year">
+            <option>2023</option>
+            <option>2024</option>
+            <option>2025</option>
+            <option>2026</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="testimonios-folder">Carpeta destino</label>
+          <input id="testimonios-folder" value="assets/testimonios/2026" />
+        </div>
+        <div class="field">
+          <label for="testimonios-json">Archivo JSON</label>
+          <input id="testimonios-json" value="assets/data/testimonios/2026.json" />
+        </div>
+        <div class="field">
+          <label>&nbsp;</label>
+          <button class="primary" id="upload-testimonios">Subir testimonios seleccionados</button>
+        </div>
+      </div>
+
+      <div class="status" id="testimonios-status"></div>
+    </section>
+  </div>
+
+  <script>
+    const state = {
+      files: [],
+      selected: new Set()
+    };
+
+    const ownerInput = document.getElementById("owner");
+    const repoInput = document.getElementById("repo");
+    const branchInput = document.getElementById("branch");
+    const folderInput = document.getElementById("folder");
+    const prefixInput = document.getElementById("prefix");
+    const startNumberInput = document.getElementById("start-number");
+    const tokenInput = document.getElementById("token");
+    const messageInput = document.getElementById("message");
+    const generoInput = document.getElementById("genero");
+    const categoriaInput = document.getElementById("categoria");
+    const tipoOroInput = document.getElementById("tipo-oro");
+    const modoJsonInput = document.getElementById("modo-json");
+    const jsonPathInput = document.getElementById("json-path");
+    const statusBox = document.getElementById("status");
+    const queue = document.getElementById("queue");
+    const summary = document.getElementById("summary");
+    const existingFilterInput = document.getElementById("existing-filter");
+    const selectionFilterInput = document.getElementById("selection-filter");
+    const selectionStartInput = document.getElementById("selection-start");
+    const selectionCountInput = document.getElementById("selection-count");
+    const manageGeneroInput = document.getElementById("manage-genero");
+    const manageCategoriaInput = document.getElementById("manage-categoria");
+    const manageTipoInput = document.getElementById("manage-tipo");
+    const manageJsonPathInput = document.getElementById("manage-json-path");
+    const managerStatusBox = document.getElementById("manager-status");
+    const testimoniosYearInput = document.getElementById("testimonios-year");
+    const testimoniosFolderInput = document.getElementById("testimonios-folder");
+    const testimoniosJsonInput = document.getElementById("testimonios-json");
+    const testimoniosStatusBox = document.getElementById("testimonios-status");
+    const gallery = document.getElementById("gallery");
+    const galleryEmpty = document.getElementById("gallery-empty");
+    const categoriasEspeciales = ["Graduacion", "15 Años", "Matrimonio"];
+    const oroLotesPaths = [
+      "assets/data/oro-lotes/hombre-cadenas.json",
+      "assets/data/oro-lotes/hombre-pulseras.json",
+      "assets/data/oro-lotes/hombre-anillos.json",
+      "assets/data/oro-lotes/hombre-argollas.json",
+      "assets/data/oro-lotes/hombre-aretes.json",
+      "assets/data/oro-lotes/mujer-cadenas.json",
+      "assets/data/oro-lotes/mujer-pulseras.json",
+      "assets/data/oro-lotes/mujer-anillos.json",
+      "assets/data/oro-lotes/mujer-argollas.json",
+      "assets/data/oro-lotes/mujer-aretes.json",
+      "assets/data/oro-lotes/ninos-cadenas.json",
+      "assets/data/oro-lotes/ninos-pulseras.json",
+      "assets/data/oro-lotes/ninos-anillos.json",
+      "assets/data/oro-lotes/ninos-argollas.json",
+      "assets/data/oro-lotes/ninos-aretes.json",
+      "assets/data/oro-lotes/unisex-cadenas.json",
+      "assets/data/oro-lotes/unisex-pulseras.json",
+      "assets/data/oro-lotes/unisex-anillos.json",
+      "assets/data/oro-lotes/unisex-argollas.json",
+      "assets/data/oro-lotes/unisex-aretes.json"
+    ];
+    let managerState = {
+      path: "",
+      sha: "",
+      json: null
+    };
+
+    function setStatus(message, tone) {
+      if (!message) {
+        statusBox.style.display = "none";
+        statusBox.textContent = "";
+        statusBox.className = "status";
+        return;
+      }
+
+      statusBox.style.display = "block";
+      statusBox.textContent = message;
+      statusBox.className = "status" + (tone ? " " + tone : "");
+    }
+
+    function setManagerStatus(message, tone) {
+      if (!message) {
+        managerStatusBox.style.display = "none";
+        managerStatusBox.textContent = "";
+        managerStatusBox.className = "status";
+        return;
+      }
+
+      managerStatusBox.style.display = "block";
+      managerStatusBox.textContent = message;
+      managerStatusBox.className = "status" + (tone ? " " + tone : "");
+    }
+
+    function setTestimonialsStatus(message, tone) {
+      if (!message) {
+        testimoniosStatusBox.style.display = "none";
+        testimoniosStatusBox.textContent = "";
+        testimoniosStatusBox.className = "status";
+        return;
+      }
+
+      testimoniosStatusBox.style.display = "block";
+      testimoniosStatusBox.textContent = message;
+      testimoniosStatusBox.className = "status" + (tone ? " " + tone : "");
+    }
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + " B";
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+      return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+    }
+
+    function slugGenero(value) {
+      return String(value || "")
+        .toLowerCase()
+        .replace("ñ", "n")
+        .replace(/[^a-z]/g, "");
+    }
+
+    function slugCategoria(value) {
+      return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z]/g, "");
+    }
+
+    function buildJsonPath() {
+      if (categoriasEspeciales.includes(categoriaInput.value)) {
+        jsonPathInput.value = "assets/data/oro-lotes/especiales-" + slugCategoria(categoriaInput.value) + ".json";
+        return;
+      }
+
+      jsonPathInput.value = "assets/data/oro-lotes/" + slugGenero(generoInput.value) + "-" + slugCategoria(categoriaInput.value) + ".json";
+    }
+
+    function buildManageJsonPath() {
+      if (categoriasEspeciales.includes(manageCategoriaInput.value)) {
+        manageJsonPathInput.value = "assets/data/oro-lotes/especiales-" + slugCategoria(manageCategoriaInput.value) + ".json";
+        return;
+      }
+
+      manageJsonPathInput.value = "assets/data/oro-lotes/" + slugGenero(manageGeneroInput.value) + "-" + slugCategoria(manageCategoriaInput.value) + ".json";
+    }
+
+    function buildTestimonialsTargets() {
+      const year = testimoniosYearInput.value;
+      testimoniosFolderInput.value = "assets/testimonios/" + year;
+      testimoniosJsonInput.value = "assets/data/testimonios/" + year + ".json";
+    }
+
+    function getSelectedFiles() {
+      return state.files.filter((file) => state.selected.has(file.__id));
+    }
+
+    function getDisplayPath(file) {
+      return file.existingPath || file.webkitRelativePath || file.name;
+    }
+
+    function createQueueItemFromFile(file, index) {
+      return {
+        __id: file.__id || (file.name + "-" + file.size + "-" + index + "-" + Date.now()),
+        name: file.name,
+        size: file.size || 0,
+        webkitRelativePath: file.webkitRelativePath || "",
+        file,
+        existingPath: "",
+        needsUpload: true,
+        plannedName: ""
+      };
+    }
+
+    function createQueueItemFromExisting(path, size, index) {
+      const name = String(path || "").split("/").pop();
+      return {
+        __id: "existing-" + path + "-" + index,
+        name,
+        size: size || 0,
+        webkitRelativePath: path,
+        file: null,
+        existingPath: path,
+        needsUpload: false,
+        plannedName: name
+      };
+    }
+
+    function sanitizePrefix(value) {
+      return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9_-]/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+    }
+
+    function fileExtension(name) {
+      const match = String(name || "").match(/(\.[^.]+)$/);
+      return match ? match[1].toLowerCase() : "";
+    }
+
+    function getRenamedFileName(file, indexInSelection) {
+      if (!file.needsUpload) {
+        return file.plannedName || file.name;
+      }
+
+      const prefix = sanitizePrefix(prefixInput.value);
+      if (!prefix) {
+        return file.name;
+      }
+
+      const start = Math.max(1, Number(startNumberInput.value || 1));
+      const sequence = String(start + indexInSelection).padStart(3, "0");
+      return prefix + "-" + sequence + fileExtension(file.name);
+    }
+
+    function refreshPlannedNames() {
+      let selectedUploadIndex = 0;
+
+      state.files.forEach((file) => {
+        if (!file.needsUpload) {
+          file.plannedName = file.plannedName || file.name;
+          return;
+        }
+
+        if (state.selected.has(file.__id)) {
+          file.plannedName = getRenamedFileName(file, selectedUploadIndex);
+          selectedUploadIndex += 1;
+        } else {
+          file.plannedName = getRenamedFileName(file, selectedUploadIndex);
+        }
+      });
+    }
+
+    function renderQueue() {
+      queue.innerHTML = "";
+
+      if (!state.files.length) {
+        summary.textContent = "No has seleccionado archivos todavia.";
+        return;
+      }
+
+      refreshPlannedNames();
+
+      const selectedFiles = getSelectedFiles();
+      const totalBytes = selectedFiles.reduce((sum, file) => sum + file.size, 0);
+      const existentes = selectedFiles.filter((file) => !file.needsUpload).length;
+      const nuevos = selectedFiles.filter((file) => file.needsUpload).length;
+      summary.textContent = selectedFiles.length + " seleccionado(s) de " + state.files.length + " | " + formatBytes(totalBytes) + " | nuevos: " + nuevos + " | existentes: " + existentes;
+
+      state.files.forEach((file, index) => {
+        const row = document.createElement("div");
+        row.className = "file-row";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = state.selected.has(file.__id);
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            state.selected.add(file.__id);
+          } else {
+            state.selected.delete(file.__id);
+          }
+          renderQueue();
+        });
+
+        const name = document.createElement("div");
+        name.className = "file-name";
+        const visibleName = file.needsUpload
+          ? ((index + 1) + ". " + getDisplayPath(file) + " -> " + (file.plannedName || file.name))
+          : ((index + 1) + ". " + getDisplayPath(file));
+        name.textContent = visibleName;
+
+        const size = document.createElement("div");
+        size.className = "file-size";
+        size.textContent = formatBytes(file.size);
+
+        const tag = document.createElement("div");
+        tag.className = "file-tag";
+        tag.textContent = !file.needsUpload
+          ? (state.selected.has(file.__id) ? "Existente seleccionado" : "Existente")
+          : (state.selected.has(file.__id) ? "Seleccionado" : "Sin seleccionar");
+
+        row.appendChild(checkbox);
+        row.appendChild(name);
+        row.appendChild(size);
+        row.appendChild(tag);
+        queue.appendChild(row);
+      });
+    }
+
+    function markAll(selected) {
+      state.selected = new Set(selected ? state.files.map((file) => file.__id) : []);
+      renderQueue();
+    }
+
+    function applyTextSelection() {
+      const filter = selectionFilterInput.value.trim().toLowerCase();
+      if (!filter) {
+        setStatus("Escribe un texto para seleccionar por nombre.", "error");
+        return;
+      }
+
+      let count = 0;
+      state.files.forEach((file) => {
+        if (getDisplayPath(file).toLowerCase().includes(filter)) {
+          state.selected.add(file.__id);
+          count += 1;
+        }
+      });
+
+      renderQueue();
+      setStatus(count ? "Se marcaron " + count + " archivo(s) por texto." : "No hubo coincidencias para ese texto.", count ? "success" : "error");
+    }
+
+    function applyRangeSelection() {
+      const start = Number(selectionStartInput.value || 0);
+      const count = Number(selectionCountInput.value || 0);
+
+      if (start < 1 || count < 1) {
+        setStatus("Define un inicio y una cantidad validos.", "error");
+        return;
+      }
+
+      const from = start - 1;
+      const to = Math.min(state.files.length, from + count);
+
+      if (from >= state.files.length) {
+        setStatus("Ese bloque empieza fuera de la lista cargada.", "error");
+        return;
+      }
+
+      for (let i = from; i < to; i += 1) {
+        state.selected.add(state.files[i].__id);
+      }
+
+      renderQueue();
+      setStatus("Se marcaron los archivos del " + start + " al " + to + ".", "success");
+    }
+
+    function addFiles(files) {
+      const valid = Array.from(files)
+        .filter((file) => !file.type || file.type.startsWith("image/"))
+        .map((file, index) => createQueueItemFromFile(file, index));
+
+      state.files = valid;
+      state.selected = new Set(valid.map((file) => file.__id));
+      renderQueue();
+      setStatus(valid.length ? valid.length + " imagen(es) agregada(s) y seleccionada(s)." : "No se detectaron imagenes validas.", valid.length ? "" : "error");
+    }
+
+    function appendExistingFiles(items) {
+      const known = new Set(state.files.map((file) => file.existingPath || file.webkitRelativePath || file.name));
+      const next = items.filter((item) => !known.has(item.existingPath || item.webkitRelativePath || item.name));
+
+      state.files = state.files.concat(next);
+      next.forEach((item) => state.selected.add(item.__id));
+      renderQueue();
+      setStatus(next.length ? next.length + " archivo(s) existente(s) agregado(s) a la cola." : "No se agregaron archivos nuevos desde assets.", next.length ? "" : "error");
+    }
+
+    async function pickFiles() {
+      if (window.showOpenFilePicker) {
+        try {
+          const handles = await window.showOpenFilePicker({
+            multiple: true,
+            excludeAcceptAllOption: false,
+            types: [
+              {
+                description: "Imagenes",
+                accept: {
+                  "image/*": [".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".tiff"]
+                }
+              }
+            ]
+          });
+
+          const files = [];
+          for (const handle of handles) {
+            files.push(await handle.getFile());
+          }
+
+          addFiles(files);
+          return;
+        } catch (_error) {}
+      }
+
+      const input = document.createElement("input");
+      input.type = "file";
+      input.multiple = true;
+      input.accept = "image/*";
+      input.style.position = "fixed";
+      input.style.left = "-9999px";
+      input.addEventListener("change", () => {
+        addFiles(input.files || []);
+        input.remove();
+      }, { once: true });
+      document.body.appendChild(input);
+      input.click();
+    }
+
+    async function pickFolder() {
+      if (window.showDirectoryPicker) {
+        try {
+          const dir = await window.showDirectoryPicker();
+          const files = [];
+
+          async function walk(handle) {
+            for await (const entry of handle.values()) {
+              if (entry.kind === "directory") {
+                await walk(entry);
+              } else if (entry.kind === "file") {
+                files.push(await entry.getFile());
+              }
+            }
+          }
+
+          await walk(dir);
+          addFiles(files);
+          return;
+        } catch (_error) {}
+      }
+
+      const input = document.createElement("input");
+      input.type = "file";
+      input.multiple = true;
+      input.accept = "image/*";
+      input.setAttribute("webkitdirectory", "");
+      input.setAttribute("directory", "");
+      input.style.position = "fixed";
+      input.style.left = "-9999px";
+      input.addEventListener("change", () => {
+        addFiles(input.files || []);
+        input.remove();
+      }, { once: true });
+      document.body.appendChild(input);
+      input.click();
+    }
+
+    function readAsBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const result = String(reader.result || "");
+          resolve(result.split(",")[1] || "");
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function sanitizeName(file) {
+      const source = file.webkitRelativePath || file.name;
+      return source
+        .replace(/\\/g, "/")
+        .split("/")
+        .pop()
+        .replace(/\s+/g, "-")
+        .replace(/[^a-zA-Z0-9._-]/g, "")
+        .replace(/-+/g, "-");
+    }
+
+    function tryGetStoredToken() {
+      const keys = ["netlify-cms-user", "decap-cms-user", "cms.user", "netlifyCMSUser", "decapCMSUser"];
+
+      for (const key of keys) {
+        const raw = localStorage.getItem(key);
+        if (!raw) continue;
+
+        try {
+          const parsed = JSON.parse(raw);
+          const token =
+            parsed?.token ||
+            parsed?.access_token ||
+            parsed?.github_access_token ||
+            parsed?.backend?.token;
+
+          if (token) return token;
+        } catch (_error) {}
+      }
+
+      return "";
+    }
+
+    async function githubRequest(path, options, token) {
+      const owner = ownerInput.value.trim();
+      const repo = repoInput.value.trim();
+
+      const response = await fetch("https://api.github.com/repos/" + owner + "/" + repo + path, {
+        ...options,
+        headers: {
+          "Authorization": "Bearer " + token,
+          "Accept": "application/vnd.github+json",
+          "Content-Type": "application/json",
+          ...(options && options.headers ? options.headers : {})
+        }
+      });
+
+      const text = await response.text();
+      let data = {};
+
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch (_error) {
+        data = { message: text };
+      }
+
+      if (!response.ok) {
+        throw new Error(data.message || "Error en GitHub");
+      }
+
+      return data;
+    }
+
+    async function listExistingAssets(token) {
+      const branch = branchInput.value.trim();
+      const folder = folderInput.value.trim().replace(/\/+$/, "");
+      const data = await githubRequest("/contents/" + folder + "?ref=" + encodeURIComponent(branch), {
+        method: "GET"
+      }, token);
+
+      const filter = existingFilterInput.value.trim().toLowerCase();
+      const items = Array.isArray(data) ? data : [];
+
+      return items
+        .filter((item) => item && item.type === "file")
+        .filter((item) => !filter || String(item.name || "").toLowerCase().includes(filter) || String(item.path || "").toLowerCase().includes(filter))
+        .map((item, index) => createQueueItemFromExisting(item.path, item.size || 0, index));
+    }
+
+    async function getExistingFileSha(path, token) {
+      const branch = branchInput.value.trim();
+
+      try {
+        const data = await githubRequest("/contents/" + path + "?ref=" + encodeURIComponent(branch), {
+          method: "GET"
+        }, token);
+
+        return data.sha || "";
+      } catch (error) {
+        if (String(error.message || "").includes("404")) {
+          return "";
+        }
+
+        return "";
+      }
+    }
+
+    async function uploadToGitHub(file, token, index, total, targetFolder) {
+      const branch = branchInput.value.trim();
+      const folder = (targetFolder || folderInput.value).trim().replace(/\/+$/, "");
+      const commitMessage = messageInput.value.trim() || "Carga de imagen";
+      const filename = sanitizeName({ name: file.plannedName || file.name, webkitRelativePath: "" });
+      const path = folder + "/" + filename;
+      const content = await readAsBase64(file.file || file);
+      const sha = await getExistingFileSha(path, token);
+
+      setStatus((sha ? "Actualizando " : "Subiendo ") + (index + 1) + " de " + total + ":\n" + filename, "");
+
+      const payload = {
+        message: commitMessage + " | " + filename,
+        content,
+        branch
+      };
+
+      if (sha) {
+        payload.sha = sha;
+      }
+
+      await githubRequest("/contents/" + path, {
+        method: "PUT",
+        body: JSON.stringify(payload)
+      }, token);
+
+      return path;
+    }
+
+    async function fetchJsonFile(path, token) {
+      const branch = branchInput.value.trim();
+      let data;
+
+      try {
+        data = await githubRequest("/contents/" + path + "?ref=" + encodeURIComponent(branch), {
+          method: "GET"
+        }, token);
+      } catch (error) {
+        if (String(error.message || "").toLowerCase().includes("not found")) {
+          return {
+            sha: "",
+            json: {
+              genero: generoInput.value,
+              categoria: categoriaInput.value,
+              grupos: []
+            }
+          };
+        }
+
+        throw error;
+      }
+
+      const content = atob(String(data.content || "").replace(/\n/g, ""));
+      return {
+        sha: data.sha,
+        json: JSON.parse(content || "{}")
+      };
+    }
+
+    async function fetchTestimonialsFile(path, token) {
+      const branch = branchInput.value.trim();
+      let data;
+
+      try {
+        data = await githubRequest("/contents/" + path + "?ref=" + encodeURIComponent(branch), {
+          method: "GET"
+        }, token);
+      } catch (error) {
+        if (String(error.message || "").toLowerCase().includes("not found")) {
+          return {
+            sha: "",
+            json: {
+              year: Number(testimoniosYearInput.value),
+              images: []
+            }
+          };
+        }
+
+        throw error;
+      }
+
+      const content = atob(String(data.content || "").replace(/\n/g, ""));
+      return {
+        sha: data.sha,
+        json: JSON.parse(content || "{}")
+      };
+    }
+
+    function imagePathFromItem(item) {
+      if (!item) return "";
+      if (typeof item === "string") return item;
+      return item.imagen || item.src || item.url || "";
+    }
+
+    function cdnImageUrl(path) {
+      const clean = String(path || "").replace(/^\.\//, "").replace(/^\//, "");
+      return "https://cdn.jsdelivr.net/gh/" + ownerInput.value.trim() + "/" + repoInput.value.trim() + "@" + branchInput.value.trim() + "/" + clean;
+    }
+
+    function renderManagerGallery() {
+      gallery.innerHTML = "";
+
+      if (!managerState.json || !Array.isArray(managerState.json.grupos)) {
+        galleryEmpty.style.display = "block";
+        galleryEmpty.textContent = "Todavía no has cargado un lote.";
+        return;
+      }
+
+      const grupo = managerState.json.grupos.find((item) => item && item.tipo === manageTipoInput.value);
+      const imagenes = Array.isArray(grupo && grupo.imagenes) ? grupo.imagenes : [];
+
+      if (!imagenes.length) {
+        galleryEmpty.style.display = "block";
+        galleryEmpty.textContent = "Ese lote no tiene imágenes para el tipo de oro seleccionado.";
+        return;
+      }
+
+      galleryEmpty.style.display = "none";
+
+      imagenes.forEach((item, index) => {
+        const path = imagePathFromItem(item);
+        if (!path) return;
+
+        const card = document.createElement("div");
+        card.className = "gallery-card";
+
+        const image = document.createElement("img");
+        image.src = cdnImageUrl(path);
+        image.alt = path.split("/").pop();
+        image.loading = "lazy";
+
+        const meta = document.createElement("div");
+        meta.className = "gallery-meta";
+        meta.textContent = (index + 1) + ". " + path;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "delete-chip";
+        deleteButton.type = "button";
+        deleteButton.textContent = "X";
+        deleteButton.title = "Borrado seguro";
+        deleteButton.addEventListener("click", () => {
+          removeImageSafely(path, index);
+        });
+
+        card.appendChild(image);
+        card.appendChild(deleteButton);
+        card.appendChild(meta);
+        gallery.appendChild(card);
+      });
+    }
+
+    async function loadManagerLote() {
+      const token = tokenInput.value.trim() || tryGetStoredToken();
+      if (!token) {
+        setManagerStatus("Pega un token para gestionar el lote de forma segura.", "error");
+        return;
+      }
+
+      try {
+        setManagerStatus("Cargando lote...", "");
+        const current = await fetchJsonFile(manageJsonPathInput.value.trim(), token);
+        managerState = {
+          path: manageJsonPathInput.value.trim(),
+          sha: current.sha,
+          json: current.json
+        };
+        renderManagerGallery();
+        setManagerStatus("Lote cargado correctamente.", "success");
+      } catch (error) {
+        managerState = { path: "", sha: "", json: null };
+        renderManagerGallery();
+        setManagerStatus("No se pudo cargar el lote:\n" + error.message, "error");
+      }
+    }
+
+    function removePathFromJson(json, targetPath) {
+      if (!json || !Array.isArray(json.grupos)) return json;
+
+      json.grupos = json.grupos.map((grupo) => {
+        if (!grupo || !Array.isArray(grupo.imagenes)) return grupo;
+
+        grupo.imagenes = grupo.imagenes.filter((item) => imagePathFromItem(item) !== targetPath);
+        return grupo;
+      });
+
+      return json;
+    }
+
+    function countReferencesInJson(json, targetPath) {
+      if (!json) return 0;
+
+      if (Array.isArray(json.grupos)) {
+        return json.grupos.reduce((sum, grupo) => {
+          if (!grupo || !Array.isArray(grupo.imagenes)) return sum;
+          return sum + grupo.imagenes.filter((item) => imagePathFromItem(item) === targetPath).length;
+        }, 0);
+      }
+
+      if (json.imagen === targetPath) return 1;
+      return 0;
+    }
+
+    async function fetchMultipleJsonFiles(paths, token) {
+      const results = await Promise.all(paths.map(async (path) => {
+        try {
+          const current = await fetchJsonFile(path, token);
+          return { path, json: current.json };
+        } catch (_error) {
+          return null;
+        }
+      }));
+
+      return results.filter(Boolean);
+    }
+
+    async function countReferencesEverywhere(targetPath, token) {
+      const paths = Array.from(new Set([managerState.path].concat(oroLotesPaths)));
+      const docs = await fetchMultipleJsonFiles(paths, token);
+      return docs.reduce((sum, doc) => sum + countReferencesInJson(doc.json, targetPath), 0);
+    }
+
+    async function deleteAssetIfUnused(targetPath, token) {
+      const refs = await countReferencesEverywhere(targetPath, token);
+      if (refs > 0) {
+        return {
+          deleted: false,
+          reason: "El asset se conservó porque todavía tiene " + refs + " referencia(s) activas."
+        };
+      }
+
+      const sha = await getExistingFileSha(targetPath, token);
+      if (!sha) {
+        return {
+          deleted: false,
+          reason: "La referencia se quitó, pero el asset físico ya no existía en el repo."
+        };
+      }
+
+      const branch = branchInput.value.trim();
+      await githubRequest("/contents/" + targetPath, {
+        method: "DELETE",
+        body: JSON.stringify({
+          message: "Borrado seguro de asset | " + targetPath.split("/").pop(),
+          sha,
+          branch
+        })
+      }, token);
+
+      return {
+        deleted: true,
+        reason: "La imagen se quitó del lote y el asset físico también se eliminó."
+      };
+    }
+
+    async function removeImageSafely(targetPath, itemIndex) {
+      const token = tokenInput.value.trim() || tryGetStoredToken();
+      if (!token) {
+        setManagerStatus("Pega un token para ejecutar el borrado seguro.", "error");
+        return;
+      }
+
+      const confirmed = window.confirm("¿Borrar de forma segura esta imagen del lote?\n\n" + targetPath);
+      if (!confirmed) return;
+
+      try {
+        setManagerStatus("Quitando imagen del lote...", "");
+
+        const current = await fetchJsonFile(managerState.path, token);
+        const nextJson = removePathFromJson(current.json, targetPath);
+        await saveJsonFile(managerState.path, nextJson, current.sha, token);
+
+        managerState.sha = current.sha;
+        managerState.json = nextJson;
+
+        const result = await deleteAssetIfUnused(targetPath, token);
+
+        const reloaded = await fetchJsonFile(managerState.path, token);
+        managerState.sha = reloaded.sha;
+        managerState.json = reloaded.json;
+        renderManagerGallery();
+
+        setManagerStatus("Imagen eliminada del lote.\n" + result.reason, "success");
+      } catch (error) {
+        setManagerStatus("No se pudo completar el borrado seguro:\n" + error.message, "error");
+      }
+    }
+
+    function mergeImagesIntoLote(json, imagePaths) {
+      const genero = categoriasEspeciales.includes(categoriaInput.value) ? "Especiales" : generoInput.value;
+      const categoria = categoriaInput.value;
+      const tipo = tipoOroInput.value;
+
+      const next = json && typeof json === "object" ? json : {};
+      next.genero = next.genero || genero;
+      next.categoria = next.categoria || categoria;
+      next.grupos = Array.isArray(next.grupos) ? next.grupos : [];
+
+      let grupo = next.grupos.find((item) => item && item.tipo === tipo);
+      if (!grupo) {
+        grupo = { tipo, imagenes: [] };
+        next.grupos.push(grupo);
+      }
+
+      grupo.imagenes = Array.isArray(grupo.imagenes) ? grupo.imagenes : [];
+
+      imagePaths.forEach((path) => {
+        const exists = grupo.imagenes.some((item) => {
+          if (typeof item === "string") return item === path;
+          return item && item.imagen === path;
+        });
+
+        if (!exists) {
+          grupo.imagenes.push({ imagen: path });
+        }
+      });
+
+      return next;
+    }
+
+    function mergeImagesIntoTestimonials(json, imagePaths) {
+      const next = json && typeof json === "object" ? json : {};
+      next.year = next.year || Number(testimoniosYearInput.value);
+      next.images = Array.isArray(next.images) ? next.images : [];
+
+      imagePaths.forEach((path) => {
+        if (!next.images.includes(path)) {
+          next.images.push(path);
+        }
+      });
+
+      return next;
+    }
+
+    async function saveJsonFile(path, json, sha, token) {
+      const branch = branchInput.value.trim();
+      const commitMessage = (messageInput.value.trim() || "Actualizacion de lote") + " | " + path.split("/").pop();
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(json, null, 2))));
+
+      await githubRequest("/contents/" + path, {
+        method: "PUT",
+        body: JSON.stringify({
+          message: commitMessage,
+          content,
+          branch,
+          sha
+        })
+      }, token);
+    }
+
+    async function uploadSelected() {
+      const files = getSelectedFiles();
+      if (!files.length) {
+        setStatus("No hay archivos seleccionados.", "error");
+        return;
+      }
+
+      const token = tokenInput.value.trim() || tryGetStoredToken();
+      if (!token) {
+        setStatus("No encontre un token valido. Pega un GitHub token con permiso de escritura al repo.", "error");
+        return;
+      }
+
+      const uploadedPaths = [];
+      const errors = [];
+
+      for (let i = 0; i < files.length; i += 1) {
+        try {
+          const path = files[i].needsUpload
+            ? await uploadToGitHub(files[i], token, i, files.length)
+            : files[i].existingPath;
+          uploadedPaths.push(path);
+        } catch (error) {
+          errors.push(files[i].name + ": " + error.message);
+        }
+      }
+
+      if (modoJsonInput.value === "append" && uploadedPaths.length) {
+        try {
+          const current = await fetchJsonFile(jsonPathInput.value.trim(), token);
+          const nextJson = mergeImagesIntoLote(current.json, uploadedPaths);
+          await saveJsonFile(jsonPathInput.value.trim(), nextJson, current.sha, token);
+        } catch (error) {
+          errors.push("JSON lote: " + error.message);
+        }
+      }
+
+      if (!errors.length) {
+        const modeText = modoJsonInput.value === "append"
+          ? " y tambien se actualizo el lote " + jsonPathInput.value.trim()
+          : "";
+        setStatus("Listo. Se subieron " + uploadedPaths.length + " imagen(es)" + modeText + ".", "success");
+        return;
+      }
+
+      setStatus("Se subieron " + uploadedPaths.length + " archivo(s), pero hubo errores:\n\n" + errors.join("\n"), "error");
+    }
+
+    async function uploadSelectedTestimonials() {
+      const files = getSelectedFiles();
+      if (!files.length) {
+        setTestimonialsStatus("No hay archivos seleccionados en la cola.", "error");
+        return;
+      }
+
+      const token = tokenInput.value.trim() || tryGetStoredToken();
+      if (!token) {
+        setTestimonialsStatus("Pega un token válido para subir testimonios.", "error");
+        return;
+      }
+
+      const uploadedPaths = [];
+      const errors = [];
+      const targetFolder = testimoniosFolderInput.value.trim();
+      const targetJson = testimoniosJsonInput.value.trim();
+
+      for (let i = 0; i < files.length; i += 1) {
+        try {
+          const path = files[i].needsUpload
+            ? await uploadToGitHub(files[i], token, i, files.length, targetFolder)
+            : files[i].existingPath;
+          uploadedPaths.push(path);
+        } catch (error) {
+          errors.push(files[i].name + ": " + error.message);
+        }
+      }
+
+      if (uploadedPaths.length) {
+        try {
+          const current = await fetchTestimonialsFile(targetJson, token);
+          const nextJson = mergeImagesIntoTestimonials(current.json, uploadedPaths);
+          await saveJsonFile(targetJson, nextJson, current.sha, token);
+        } catch (error) {
+          errors.push("JSON testimonios: " + error.message);
+        }
+      }
+
+      if (!errors.length) {
+        setTestimonialsStatus("Listo. Se cargaron " + uploadedPaths.length + " testimonio(s) al año " + testimoniosYearInput.value + ".", "success");
+        return;
+      }
+
+      setTestimonialsStatus("Se subieron " + uploadedPaths.length + " archivo(s), pero hubo errores:\n\n" + errors.join("\n"), "error");
+    }
+
+    generoInput.addEventListener("change", buildJsonPath);
+    categoriaInput.addEventListener("change", buildJsonPath);
+    prefixInput.addEventListener("input", renderQueue);
+    startNumberInput.addEventListener("input", renderQueue);
+    manageGeneroInput.addEventListener("change", buildManageJsonPath);
+    manageCategoriaInput.addEventListener("change", buildManageJsonPath);
+    testimoniosYearInput.addEventListener("change", buildTestimonialsTargets);
+
+    document.getElementById("pick-files").addEventListener("click", pickFiles);
+    document.getElementById("pick-folder").addEventListener("click", pickFolder);
+    document.getElementById("load-existing").addEventListener("click", async () => {
+      const token = tokenInput.value.trim() || tryGetStoredToken();
+      if (!token) {
+        setStatus("Pega un token para listar archivos existentes de assets.", "error");
+        return;
+      }
+
+      try {
+        setStatus("Cargando archivos existentes desde " + folderInput.value.trim() + "...", "");
+        const items = await listExistingAssets(token);
+        state.files = items;
+        state.selected = new Set(items.map((item) => item.__id));
+        renderQueue();
+        setStatus(items.length ? items.length + " archivo(s) existente(s) cargado(s) y seleccionado(s)." : "No se encontraron archivos existentes con ese filtro.", items.length ? "success" : "error");
+      } catch (error) {
+        setStatus("No se pudieron cargar archivos existentes:\n" + error.message, "error");
+      }
+    });
+    document.getElementById("append-existing").addEventListener("click", async () => {
+      const token = tokenInput.value.trim() || tryGetStoredToken();
+      if (!token) {
+        setStatus("Pega un token para agregar archivos existentes de assets.", "error");
+        return;
+      }
+
+      try {
+        setStatus("Buscando archivos existentes para agregar a la cola...", "");
+        const items = await listExistingAssets(token);
+        appendExistingFiles(items);
+      } catch (error) {
+        setStatus("No se pudieron agregar archivos existentes:\n" + error.message, "error");
+      }
+    });
+    document.getElementById("clear-files").addEventListener("click", () => {
+      state.files = [];
+      state.selected = new Set();
+      renderQueue();
+      setStatus("");
+    });
+    document.getElementById("upload-selected").addEventListener("click", uploadSelected);
+    document.getElementById("select-all").addEventListener("click", () => markAll(true));
+    document.getElementById("clear-selection").addEventListener("click", () => markAll(false));
+    document.getElementById("mark-all").addEventListener("click", () => markAll(true));
+    document.getElementById("mark-none").addEventListener("click", () => markAll(false));
+    document.getElementById("mark-images").addEventListener("click", applyTextSelection);
+    document.getElementById("select-range").addEventListener("click", applyRangeSelection);
+    document.getElementById("load-lote").addEventListener("click", loadManagerLote);
+    document.getElementById("refresh-lote").addEventListener("click", loadManagerLote);
+    document.getElementById("upload-testimonios").addEventListener("click", uploadSelectedTestimonials);
+
+    buildJsonPath();
+    buildManageJsonPath();
+    buildTestimonialsTargets();
+    renderQueue();
+    renderManagerGallery();
+  </script>
+</body>
+</html>

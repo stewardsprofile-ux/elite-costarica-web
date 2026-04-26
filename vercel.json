@@ -1,0 +1,21 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/oro.html",
+      "destination": "/oro",
+      "permanent": true
+    },
+    {
+      "source": "/testimonios.html",
+      "destination": "/testimonios",
+      "permanent": true
+    },
+    {
+      "source": "/pieza.html",
+      "destination": "/pieza",
+      "permanent": true
+    }
+  ]
+}

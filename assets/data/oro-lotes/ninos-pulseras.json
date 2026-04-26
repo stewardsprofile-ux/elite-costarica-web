@@ -1,0 +1,35 @@
+{
+  "genero": "NiÃ±os",
+  "categoria": "Pulseras",
+  "grupos": [
+    {
+      "tipo": "Oro Nacional",
+      "imagenes": [
+        {
+          "imagen": "assets/images/e8df76ec-0f97-411b-bee7-c2bbe091cb91.jpg"
+        },
+        {
+          "imagen": "assets/images/d1594935-4155-4656-af48-c3c417c62de3.jpg"
+        },
+        {
+          "imagen": "assets/images/9d22db1d-5486-4ee5-94f4-72a0d30fe8ac.jpg"
+        },
+        {
+          "imagen": "assets/images/4d98bf9c-fcbd-4ae2-a00e-6fed8f4eeb1a.jpg"
+        },
+        {
+          "imagen": "assets/images/23fa2f48-c2da-46af-9b47-c2007938dfbe.jpg"
+        },
+        {
+          "imagen": "assets/images/20f757eb-acb9-4957-83fa-9997aa1852f2.jpg"
+        },
+        {
+          "imagen": "assets/images/61a5d51e-87b6-4e19-b4dc-daf540452989.jpg"
+        },
+        {
+          "imagen": "assets/images/e9b8434d-5a27-4105-858f-e3b16f6f57d6.jpg"
+        }
+      ]
+    }
+  ]
+}

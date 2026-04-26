@@ -1,0 +1,38 @@
+{
+  "genero": "Hombre",
+  "categoria": "15 Años",
+  "grupos": [
+    {
+      "tipo": "Oro Nacional",
+      "imagenes": [
+        {
+          "imagen": "assets/images/0421f561-6f2d-4bc0-bf66-443f7fa5fb32.jpg"
+        },
+        {
+          "imagen": "assets/images/1535869a-ea0d-4d33-8f32-4b853a8cfefd.jpg"
+        },
+        {
+          "imagen": "assets/images/5543e824-a461-432b-80ce-c1af5fb4a484.jpg"
+        },
+        {
+          "imagen": "assets/images/61c8c420-4c9e-4e1e-89cb-595a16891a75.jpg"
+        },
+        {
+          "imagen": "assets/images/89e88a19-247a-44d5-9708-8c61b4648660.jpg"
+        },
+        {
+          "imagen": "assets/images/86a88156-ff2c-4063-afcf-f63ef2ae2ccc.jpg"
+        },
+        {
+          "imagen": "assets/images/b4494928-3286-468a-9482-34848cc9c8c6.jpg"
+        },
+        {
+          "imagen": "assets/images/c16654d0-b368-4319-86ab-742c9d03555e.jpg"
+        },
+        {
+          "imagen": "assets/images/b77537bb-d6e9-4ae5-ac83-d24bc0c42d30.jpg"
+        }
+      ]
+    }
+  ]
+}

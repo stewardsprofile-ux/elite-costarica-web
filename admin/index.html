@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Admin | Centro de Mando</title>
+
+  <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
+
+  <style>
+    body { background-color: #10171f !important; }
+    .nc-app-layout-content { background: #10171f !important; }
+    .elite-bulk-link {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      background: #ffffff;
+      color: #10171f;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <a class="elite-bulk-link" href="/admin/bulk-upload.html">Carga Masiva</a>
+  <script>
+    (function () {
+      function findButtonByText(scope, text) {
+        return Array.from(scope.querySelectorAll("button")).find(function (button) {
+          return button.textContent && button.textContent.trim() === text;
+        });
+      }
+
+      function enhanceMediaDialogs() {
+        const dialogs = Array.from(document.querySelectorAll('[role="dialog"]'));
+
+        dialogs.forEach(function (dialog) {
+          const deleteSelectedButton = findButtonByText(dialog, "Delete selected");
+          const chooseSelectedButton = findButtonByText(dialog, "Choose selected");
+          if (!deleteSelectedButton || !chooseSelectedButton) return;
+          if (dialog.querySelector('[data-elite-select-all="true"]')) return;
+
+          const selectAllButton = deleteSelectedButton.cloneNode(true);
+          selectAllButton.type = "button";
+          selectAllButton.dataset.eliteSelectAll = "true";
+          selectAllButton.textContent = "Seleccionar todo";
+          selectAllButton.style.background = "#e8f0ff";
+          selectAllButton.style.color = "#163b74";
+
+          selectAllButton.addEventListener("click", function () {
+            const checkboxes = Array.from(dialog.querySelectorAll('input[type="checkbox"]')).filter(function (checkbox) {
+              return !checkbox.disabled && !checkbox.checked;
+            });
+
+            checkboxes.forEach(function (checkbox) {
+              checkbox.click();
+            });
+          });
+
+          deleteSelectedButton.parentElement.insertBefore(selectAllButton, deleteSelectedButton);
+        });
+      }
+
+      const observer = new MutationObserver(function () {
+        enhanceMediaDialogs();
+      });
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", enhanceMediaDialogs, { once: true });
+      } else {
+        enhanceMediaDialogs();
+      }
+
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
+</body>
+</html>

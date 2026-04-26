@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Testimonios | Elite Costa Rica</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <style>
+        :root {
+            --bg: #10171f;
+            --panel: #171f29;
+            --panel-2: #1d2631;
+            --text: #f6f7fb;
+            --muted: #97a3af;
+            --gold: #E6C200;
+            --line: rgba(255,255,255,.08);
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .page {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 28px 18px 60px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 16px;
+            text-decoration: none;
+            color: rgba(255,255,255,.8);
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 12px;
+            padding: 10px 14px;
+            background: rgba(255,255,255,.04);
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 12px 0 24px;
+        }
+
+        .hero img {
+            width: 88px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .hero h1 {
+            margin: 0 0 10px;
+            font-size: clamp(2.2rem, 4.8vw, 4rem);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: 0 auto;
+            color: var(--muted);
+            line-height: 1.55;
+            font-size: 1rem;
+        }
+
+        .years {
+            display: grid;
+            gap: 28px;
+            margin-top: 26px;
+        }
+
+        .year-card {
+            background: rgba(23, 31, 41, .88);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            padding: 22px;
+            overflow: hidden;
+        }
+
+        .year-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .year-head h2 {
+            margin: 0;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 1.35rem;
+        }
+
+        .year-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .year-controls button {
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: 1px solid rgba(230,194,0,.24);
+            background: rgba(230,194,0,.09);
+            color: var(--gold);
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 800;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel {
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 18px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 6px;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slide {
+            flex: 0 0 min(33.333%, 360px);
+            background: rgba(255,255,255,.04);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            overflow: hidden;
+            min-width: 280px;
+        }
+
+        .slide img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            display: block;
+            background: var(--panel-2);
+        }
+
+        .empty {
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px dashed var(--line);
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(4, 8, 12, .88);
+            z-index: 1000;
+            padding: 24px;
+            touch-action: pan-y;
+        }
+
+        .lightbox img {
+            max-width: min(92vw, 980px);
+            max-height: 88vh;
+            border-radius: 22px;
+            border: 1px solid rgba(255,255,255,.12);
+            box-shadow: 0 24px 60px rgba(0,0,0,.35);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.16);
+            background: rgba(255,255,255,.08);
+            color: #fff;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: 800;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-prev { left: 18px; }
+        .lightbox-next { right: 18px; }
+
+        .lightbox-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 48px;
+            height: 48px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.16);
+            background: rgba(255,255,255,.08);
+            color: #fff;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 800;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 860px) {
+            .year-head { align-items: flex-start; flex-direction: column; }
+            .slide { min-width: 76vw; }
+            .lightbox { padding: 20px 14px; }
+            .lightbox-nav {
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
+            }
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <a href="/oro" class="btn-back">← Regresar</a>
+
+        <section class="hero">
+            <img src="assets/logo.png" alt="Elite">
+            <h1>Testimonios</h1>
+            <p>Historias reales de clientes que ya vivieron la experiencia Elite. Revisa cada año con calma o deja que el carrusel avance solo.</p>
+        </section>
+
+        <section class="years" id="years"></section>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior">←</button>
+        <button class="lightbox-close" id="lightboxClose">X</button>
+        <img id="lightboxImage" src="" alt="Testimonio ampliado">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Siguiente">→</button>
+    </div>
+
+    <script>
+        const years = [2023, 2024, 2025, 2026];
+        const yearsContainer = document.getElementById("years");
+        const carousels = [];
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxClose = document.getElementById("lightboxClose");
+        const lightboxPrev = document.getElementById("lightboxPrev");
+        const lightboxNext = document.getElementById("lightboxNext");
+        const repoOwner = "stewardsprofile-ux";
+        const repoName = "elite-catalogo";
+        const repoBranch = "main";
+        let autoAdvanceTimer = null;
+        let currentGallery = [];
+        let currentIndex = 0;
+        let touchStartX = 0;
+
+        function absoluteUrl(path) {
+            if (!path) return "assets/placeholder.webp";
+            if (/^https?:\/\//i.test(path)) return path;
+            const clean = path.replace(/^\.\//, "").replace(/^\//, "");
+
+            if (clean.startsWith("assets/")) {
+                return `https://cdn.jsdelivr.net/gh/${repoOwner}/${repoName}@${repoBranch}/${clean}`;
+            }
+
+            return clean;
+        }
+
+        function buildYearSection(year, images) {
+            const section = document.createElement("article");
+            section.className = "year-card";
+
+            const head = document.createElement("div");
+            head.className = "year-head";
+
+            const title = document.createElement("h2");
+            title.textContent = year;
+
+            const controls = document.createElement("div");
+            controls.className = "year-controls";
+
+            const prev = document.createElement("button");
+            prev.type = "button";
+            prev.textContent = "←";
+
+            const next = document.createElement("button");
+            next.type = "button";
+            next.textContent = "→";
+
+            controls.appendChild(prev);
+            controls.appendChild(next);
+            head.appendChild(title);
+            head.appendChild(controls);
+            section.appendChild(head);
+
+            if (!images.length) {
+                const empty = document.createElement("div");
+                empty.className = "empty";
+                empty.textContent = "Todavía no hay testimonios cargados para este año.";
+                section.appendChild(empty);
+                return section;
+            }
+
+            const carousel = document.createElement("div");
+            carousel.className = "carousel";
+
+            const track = document.createElement("div");
+            track.className = "carousel-track";
+
+            images.forEach((path, index) => {
+                const slide = document.createElement("div");
+                slide.className = "slide";
+
+                const image = document.createElement("img");
+                image.src = absoluteUrl(path);
+                image.alt = `Testimonio ${year} ${index + 1}`;
+                image.loading = "lazy";
+                image.style.cursor = "zoom-in";
+                image.addEventListener("click", () => {
+                    openLightbox(images.map((item) => absoluteUrl(item)), index, year);
+                });
+
+                slide.appendChild(image);
+                track.appendChild(slide);
+            });
+
+            carousel.appendChild(track);
+            section.appendChild(carousel);
+
+            prev.addEventListener("click", () => {
+                track.scrollBy({ left: -Math.max(track.clientWidth * 0.85, 320), behavior: "smooth" });
+            });
+
+            next.addEventListener("click", () => {
+                track.scrollBy({ left: Math.max(track.clientWidth * 0.85, 320), behavior: "smooth" });
+            });
+
+            carousels.push(track);
+            return section;
+        }
+
+        async function loadTestimonials() {
+            const responses = await Promise.all(
+                years.map(async (year) => {
+                    try {
+                        const res = await fetch(`https://raw.githubusercontent.com/${repoOwner}/${repoName}/${repoBranch}/assets/data/testimonios/${year}.json?t=${Date.now()}`);
+                        if (!res.ok) return { year, images: [] };
+                        const data = await res.json();
+                        return { year, images: Array.isArray(data.images) ? data.images : [] };
+                    } catch (_error) {
+                        return { year, images: [] };
+                    }
+                })
+            );
+
+            yearsContainer.innerHTML = "";
+            responses.forEach(({ year, images }) => {
+                yearsContainer.appendChild(buildYearSection(year, images));
+            });
+        }
+
+        function autoAdvance() {
+            carousels.forEach((track) => {
+                const step = Math.max(track.clientWidth * 0.85, 320);
+                const maxScroll = track.scrollWidth - track.clientWidth;
+
+                if (track.scrollLeft + step >= maxScroll - 4) {
+                    track.scrollTo({ left: 0, behavior: "smooth" });
+                } else {
+                    track.scrollBy({ left: step, behavior: "smooth" });
+                }
+            });
+        }
+
+        function startAutoAdvance() {
+            if (autoAdvanceTimer) clearInterval(autoAdvanceTimer);
+            autoAdvanceTimer = setInterval(autoAdvance, 3200);
+        }
+
+        function stopAutoAdvance() {
+            if (autoAdvanceTimer) {
+                clearInterval(autoAdvanceTimer);
+                autoAdvanceTimer = null;
+            }
+        }
+
+        function renderLightboxImage() {
+            if (!currentGallery.length) return;
+            lightboxImage.src = currentGallery[currentIndex];
+            lightboxImage.alt = `Testimonio ampliado ${currentIndex + 1}`;
+        }
+
+        function showPrevImage() {
+            if (!currentGallery.length) return;
+            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+            renderLightboxImage();
+        }
+
+        function showNextImage() {
+            if (!currentGallery.length) return;
+            currentIndex = (currentIndex + 1) % currentGallery.length;
+            renderLightboxImage();
+        }
+
+        function openLightbox(gallery, index, year) {
+            currentGallery = gallery;
+            currentIndex = index;
+            renderLightboxImage();
+            lightboxImage.alt = `Testimonio ${year} ${index + 1}`;
+            lightbox.style.display = "flex";
+            stopAutoAdvance();
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = "none";
+            lightboxImage.src = "";
+            currentGallery = [];
+            currentIndex = 0;
+            startAutoAdvance();
+        }
+
+        lightboxClose.addEventListener("click", closeLightbox);
+        lightboxPrev.addEventListener("click", (event) => {
+            event.stopPropagation();
+            showPrevImage();
+        });
+        lightboxNext.addEventListener("click", (event) => {
+            event.stopPropagation();
+            showNextImage();
+        });
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        lightbox.addEventListener("touchstart", (event) => {
+            touchStartX = event.changedTouches[0].clientX;
+        }, { passive: true });
+
+        lightbox.addEventListener("touchend", (event) => {
+            const deltaX = event.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(deltaX) < 40) return;
+            if (deltaX > 0) {
+                showPrevImage();
+            } else {
+                showNextImage();
+            }
+        }, { passive: true });
+
+        document.addEventListener("keydown", (event) => {
+            if (lightbox.style.display !== "flex") return;
+            if (event.key === "Escape") closeLightbox();
+            if (event.key === "ArrowLeft") showPrevImage();
+            if (event.key === "ArrowRight") showNextImage();
+        });
+
+        loadTestimonials().then(() => {
+            startAutoAdvance();
+        });
+    </script>
+</body>
+</html>

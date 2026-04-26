@@ -1,0 +1,200 @@
+{
+  "genero": "Hombre",
+  "categoria": "Anillos",
+  "grupos": [
+    {
+      "tipo": "Oro Nacional",
+      "imagenes": [
+        {
+          "imagen": "assets/images/103b87e7-0ddd-4cbc-af80-0c141f08df6a.jpg"
+        },
+        {
+          "imagen": "assets/images/0ab39a89-6cdc-48ac-8b58-91d741b4b8fe.jpg"
+        },
+        {
+          "imagen": "assets/images/15a19544-0e72-45f2-9496-19b38acd26c8.jpg"
+        },
+        {
+          "imagen": "assets/images/3ac1be9b-3e2e-4643-b296-c424af4afcdf.jpg"
+        },
+        {
+          "imagen": "assets/images/00595493-7c3d-4a57-8078-0ec73b91e67f.jpg"
+        },
+        {
+          "imagen": "assets/images/1a48495a-3fc4-4e17-8573-f0180b9575c4.jpg"
+        },
+        {
+          "imagen": "assets/images/1b874471-d0e1-4bc1-9b07-64a5af07d4bc.jpg"
+        },
+        {
+          "imagen": "assets/images/1d1385ac-4c20-4084-8179-247f963bf991.jpg"
+        },
+        {
+          "imagen": "assets/images/33767740-133d-4f85-9c53-9235fe471eba.jpg"
+        },
+        {
+          "imagen": "assets/images/3435e486-859a-4822-ad7a-1b61d30bf8b3.jpg"
+        },
+        {
+          "imagen": "assets/images/32e1af2c-7de5-40fd-a615-8f0065330521.jpg"
+        },
+        {
+          "imagen": "assets/images/3e03d99c-d792-4fbb-8f25-d84de0d6f4d0.jpg"
+        },
+        {
+          "imagen": "assets/images/45de34fe-4f39-43e0-a33c-b667c5af4dbc.jpg"
+        },
+        {
+          "imagen": "assets/images/4bc42eac-9e76-425a-b583-f3ff55472de8.jpg"
+        },
+        {
+          "imagen": "assets/images/3ad30d8e-5a08-4fc8-a286-1836dc5188fa.jpg"
+        },
+        {
+          "imagen": "assets/images/2a1cfbb6-8137-492e-bc0c-b0820460785c.jpg"
+        },
+        {
+          "imagen": "assets/images/58745cee-daa5-423b-8f18-d7d7ebee93f8.jpg"
+        },
+        {
+          "imagen": "assets/images/58df458d-111d-436e-bd86-4718cdf4c906.jpg"
+        },
+        {
+          "imagen": "assets/images/59df4b86-7bb6-4c20-9842-d4a790307510.jpg"
+        },
+        {
+          "imagen": "assets/images/61edadb3-1282-4d59-ad33-63a27cb01047.jpg"
+        },
+        {
+          "imagen": "assets/images/5beb86f6-9783-4abe-a070-75f7932bf2e8.jpg"
+        },
+        {
+          "imagen": "assets/images/6d130305-491a-43e9-bb44-42f21c16f702.jpg"
+        },
+        {
+          "imagen": "assets/images/6d2eda74-7f05-4c41-91e5-54923e07740a.jpg"
+        },
+        {
+          "imagen": "assets/images/6f6e5776-a003-42ec-b7ba-d6672d724ab7.jpg"
+        },
+        {
+          "imagen": "assets/images/7ae9dcc9-c40d-46b0-85e1-b9f8d022f336.jpg"
+        },
+        {
+          "imagen": "assets/images/7b05cc85-b09b-4177-b316-918bcc98438d.jpg"
+        },
+        {
+          "imagen": "assets/images/79aa197e-f4a2-4e09-838f-5fb69c6a00a3.jpg"
+        },
+        {
+          "imagen": "assets/images/70e5449e-30b2-4021-92e9-1fdb946345ea.jpg"
+        },
+        {
+          "imagen": "assets/images/81185633-d9f6-4a87-95ec-baf74ac6aa8d.jpg"
+        },
+        {
+          "imagen": "assets/images/7dfb3198-14cd-4656-9471-c6c3bdaf7433.jpg"
+        },
+        {
+          "imagen": "assets/images/801fdfca-6451-4061-8e8d-4740ebf41973.jpg"
+        },
+        {
+          "imagen": "assets/images/8696cc96-962a-448c-98b1-30a6025741f5.jpg"
+        },
+        {
+          "imagen": "assets/images/87ed0d5d-465c-4c6b-ae92-98a0edf622a0.jpg"
+        },
+        {
+          "imagen": "assets/images/90d17049-27d2-47f2-a8c1-a37b3c74e2e2.jpg"
+        },
+        {
+          "imagen": "assets/images/8e678799-21ee-4c3c-a613-ceabda9b2a02.jpg"
+        },
+        {
+          "imagen": "assets/images/99b5237c-3d4a-400e-890f-93afe515870f.jpg"
+        },
+        {
+          "imagen": "assets/images/9a436b04-b0b5-4b1c-9cc5-fb2a2b1a6744.jpg"
+        },
+        {
+          "imagen": "assets/images/9b191241-919f-4858-bb06-6eedba3c55a0.jpg"
+        },
+        {
+          "imagen": "assets/images/9e5f33c6-9c90-4c71-ba2e-b0e8e2b3a03d.jpg"
+        },
+        {
+          "imagen": "assets/images/9ef94e51-e83c-4fb8-9dee-b08fb5188267.jpg"
+        },
+        {
+          "imagen": "assets/images/a9530305-4950-4458-a6e3-79c48518da8c.jpg"
+        },
+        {
+          "imagen": "assets/images/b13d90a9-e607-4254-815f-2fcf249d0050.jpg"
+        },
+        {
+          "imagen": "assets/images/b6a38aae-e84e-48e4-a2a5-f20b1fa9f827.jpg"
+        },
+        {
+          "imagen": "assets/images/b76fba0f-9f42-4ee3-854f-fdaad4f49194.jpg"
+        },
+        {
+          "imagen": "assets/images/ca4db732-ce71-4262-9965-b34521b16a78.jpg"
+        },
+        {
+          "imagen": "assets/images/deb6dbb9-d201-4305-b578-ae2caefe1f43.jpg"
+        },
+        {
+          "imagen": "assets/images/f0682702-26fc-47de-96e1-91d57dc196ef.jpg"
+        },
+        {
+          "imagen": "assets/images/e546eff1-9af9-4e2e-bb50-a116be0d04d9.jpg"
+        },
+        {
+          "imagen": "assets/images/f793bfc2-2ded-4ada-a47a-a11908df7b2d.jpg"
+        },
+        {
+          "imagen": "assets/images/f26bfabc-90c8-4dcd-a66d-1ee1373198fb.jpg"
+        },
+        {
+          "imagen": "assets/images/face1848-211a-45c0-94a2-7764d77d7eef.jpg"
+        },
+        {
+          "imagen": "assets/images/IMG_5082.JPG"
+        },
+        {
+          "imagen": "assets/images/IMG_5079.JPG"
+        },
+        {
+          "imagen": "assets/images/IMG_5086.JPG"
+        },
+        {
+          "imagen": "assets/images/IMG_5087.JPG"
+        },
+        {
+          "imagen": "assets/images/116.jpeg"
+        },
+        {
+          "imagen": "assets/images/184.jpeg"
+        },
+        {
+          "imagen": "assets/images/185.jpeg"
+        },
+        {
+          "imagen": "assets/images/191.jpeg"
+        },
+        {
+          "imagen": "assets/images/235.jpeg"
+        },
+        {
+          "imagen": "assets/images/245.jpeg"
+        },
+        {
+          "imagen": "assets/images/264.jpeg"
+        },
+        {
+          "imagen": "assets/images/267.jpeg"
+        }
+      ]
+    }
+  ]
+}

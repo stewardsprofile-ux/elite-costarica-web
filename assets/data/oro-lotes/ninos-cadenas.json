@@ -1,0 +1,55 @@
+{
+  "genero": "NiÃ±os",
+  "categoria": "Cadenas",
+  "grupos": [
+    {
+      "tipo": "Oro Italiano",
+      "imagenes": [
+        {
+          "imagen": "assets/images/2a4e964f-39b4-43e2-a843-e82a2ced0d53.jpg"
+        },
+        {
+          "imagen": "assets/images/57b718b2-712f-4639-9785-274e48c51a52.jpg"
+        },
+        {
+          "imagen": "assets/images/2dd82b51-abfa-4a9e-9ac2-c8beabbfe687.jpg"
+        },
+        {
+          "imagen": "assets/images/37a2b42a-fc4f-4a28-b608-c01bdfcbb425.jpg"
+        },
+        {
+          "imagen": "assets/images/13c0cb55-5324-4481-9c39-ec197c22f14f.jpg"
+        },
+        {
+          "imagen": "assets/images/5bd2e0ec-e949-46c2-9c2d-de3980f78433.jpg"
+        },
+        {
+          "imagen": "assets/images/7748bfc7-2d67-40dc-9728-d388a19f06ee.jpg"
+        },
+        {
+          "imagen": "assets/images/8f73dc0e-5771-4f70-b09d-576e4193032b.jpg"
+        },
+        {
+          "imagen": "assets/images/d75bd147-128c-4685-b51b-93eafb25d124.jpg"
+        },
+        {
+          "imagen": "assets/images/ed4c2cfd-4702-4d4c-af77-c41fa847dc4c.jpg"
+        },
+        {
+          "imagen": "assets/images/f6b437bc-4d78-449c-8463-5320fc3f6411.jpg"
+        }
+      ]
+    },
+    {
+      "tipo": "Oro Nacional",
+      "imagenes": [
+        {
+          "imagen": "assets/images/01f5b274-e171-4ac8-9ceb-b663614d4861.jpg"
+        },
+        {
+          "imagen": "assets/images/2d2578de-6bbd-464d-a607-fa3af9195475.jpg"
+        }
+      ]
+    }
+  ]
+}

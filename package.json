@@ -1,0 +1,11 @@
+{
+  "name": "catalogo-elite-parfums",
+  "version": "1.0.0",
+  "description": "Catalogo con Asistente IA",
+  "main": "index.html",
+  "dependencies": {
+    "openai": "^4.0.0"
+  },
+  "author": "Warner Steward",
+  "license": "ISC"
+}

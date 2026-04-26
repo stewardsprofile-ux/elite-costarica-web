@@ -1,0 +1,74 @@
+{
+  "genero": "Mujer",
+  "categoria": "Cadenas",
+  "grupos": [
+    {
+      "tipo": "Oro Italiano",
+      "imagenes": [
+        {
+          "imagen": "assets/images/2dd82b51-abfa-4a9e-9ac2-c8beabbfe687.jpg"
+        },
+        {
+          "imagen": "assets/images/2a4e964f-39b4-43e2-a843-e82a2ced0d53.jpg"
+        },
+        {
+          "imagen": "assets/images/37a2b42a-fc4f-4a28-b608-c01bdfcbb425.jpg"
+        },
+        {
+          "imagen": "assets/images/13c0cb55-5324-4481-9c39-ec197c22f14f.jpg"
+        },
+        {
+          "imagen": "assets/images/4bd92718-d9af-4563-beb6-ef7af229b643.jpg"
+        },
+        {
+          "imagen": "assets/images/57b718b2-712f-4639-9785-274e48c51a52.jpg"
+        },
+        {
+          "imagen": "assets/images/4d07f096-2e6b-4e3f-a275-57379d4e1eea.jpg"
+        },
+        {
+          "imagen": "assets/images/5bd2e0ec-e949-46c2-9c2d-de3980f78433.jpg"
+        },
+        {
+          "imagen": "assets/images/5151d582-942c-4919-b35a-afe8a575062c.jpg"
+        },
+        {
+          "imagen": "assets/images/61c9fc23-9ec1-481e-89c3-23363313c464.jpg"
+        },
+        {
+          "imagen": "assets/images/64af6a3b-5807-45c6-aedf-469c9db8ed34.jpg"
+        },
+        {
+          "imagen": "assets/images/9b5f4b6f-cd95-4a03-9744-9a79888d3909.jpg"
+        },
+        {
+          "imagen": "assets/images/89156863-8551-4a89-a0de-d3dfbdf5950a.jpg"
+        },
+        {
+          "imagen": "assets/images/8f73dc0e-5771-4f70-b09d-576e4193032b.jpg"
+        },
+        {
+          "imagen": "assets/images/7748bfc7-2d67-40dc-9728-d388a19f06ee.jpg"
+        },
+        {
+          "imagen": "assets/images/8dd8cbab-cf70-47a7-9419-0234363d44d1.jpg"
+        },
+        {
+          "imagen": "assets/images/bc255096-8ad1-4460-97f9-f56ba5c4b9c0.jpg"
+        },
+        {
+          "imagen": "assets/images/d75bd147-128c-4685-b51b-93eafb25d124.jpg"
+        },
+        {
+          "imagen": "assets/images/ed4c2cfd-4702-4d4c-af77-c41fa847dc4c.jpg"
+        },
+        {
+          "imagen": "assets/images/e6219249-98e9-489b-9e7d-efff9aed3ee5.jpg"
+        },
+        {
+          "imagen": "assets/images/f6b437bc-4d78-449c-8463-5320fc3f6411.jpg"
+        }
+      ]
+    }
+  ]
+}

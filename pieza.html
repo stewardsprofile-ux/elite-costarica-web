@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pieza de Oro | Elite Costa Rica</title>
+    <style>
+        :root {
+            --bg: #131a24;
+            --panel: #1d2531;
+            --panel-soft: rgba(230, 194, 0, 0.08);
+            --text: #f5f7fb;
+            --muted: #c8d0dc;
+            --gold: #E6C200;
+            --border: rgba(230, 194, 0, 0.22);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at top, #1a2433 0%, var(--bg) 55%);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .pieza-shell {
+            width: min(960px, 100%);
+        }
+
+        .volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin-bottom: 18px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .pieza-card {
+            display: block;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 22px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+        }
+
+        .pieza-media {
+            background: #10161f;
+            border-radius: 22px;
+            overflow: hidden;
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pieza-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .estado {
+            text-align: center;
+            padding: 40px 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            color: var(--muted);
+        }
+
+        @media (max-width: 820px) {
+            .pieza-media {
+                min-height: 360px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="pieza-shell">
+        <a class="volver" href="/oro">&larr; Volver al catalogo</a>
+        <section id="piezaRoot" class="estado">Cargando pieza...</section>
+    </main>
+
+    <script>
+        const repoOwner = "stewardsprofile-ux";
+        const repoName = "elite-catalogo";
+        const repoBranch = "main";
+        const categoriasEspecialesOro = ["Graduacion", "15 Años", "Matrimonio"];
+        const lotesOroLocales = [
+            "assets/data/oro-lotes/hombre-cadenas.json",
+            "assets/data/oro-lotes/hombre-pulseras.json",
+            "assets/data/oro-lotes/hombre-anillos.json",
+            "assets/data/oro-lotes/hombre-argollas.json",
+            "assets/data/oro-lotes/hombre-aretes.json",
+            "assets/data/oro-lotes/mujer-cadenas.json",
+            "assets/data/oro-lotes/mujer-pulseras.json",
+            "assets/data/oro-lotes/mujer-anillos.json",
+            "assets/data/oro-lotes/mujer-argollas.json",
+            "assets/data/oro-lotes/mujer-aretes.json",
+            "assets/data/oro-lotes/ninos-cadenas.json",
+            "assets/data/oro-lotes/ninos-pulseras.json",
+            "assets/data/oro-lotes/ninos-anillos.json",
+            "assets/data/oro-lotes/ninos-argollas.json",
+            "assets/data/oro-lotes/ninos-aretes.json",
+            "assets/data/oro-lotes/unisex-cadenas.json",
+            "assets/data/oro-lotes/unisex-pulseras.json",
+            "assets/data/oro-lotes/unisex-anillos.json",
+            "assets/data/oro-lotes/unisex-argollas.json",
+            "assets/data/oro-lotes/unisex-aretes.json",
+            "assets/data/oro-lotes/especiales-graduacion.json",
+            "assets/data/oro-lotes/especiales-anos.json",
+            "assets/data/oro-lotes/especiales-matrimonio.json"
+        ];
+
+        function slugWhatsApp(texto) {
+            return String(texto || "")
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-+|-+$/g, "");
+        }
+
+        function capitalizarNombre(texto) {
+            return String(texto || "")
+                .toLowerCase()
+                .replace(/\b([a-záéíóúñ])/g, (match) => match.toUpperCase())
+                .trim();
+        }
+
+        function nombreDesdeImagen(ruta, fallback = "Pieza de oro") {
+            const base = String(ruta || "")
+                .split("/")
+                .pop()
+                .split("?")[0]
+                .replace(/\.[^.]+$/, "")
+                .replace(/[_-]+/g, " ")
+                .replace(/\s+/g, " ")
+                .replace(/^\d+\s*/, "")
+                .trim();
+
+            return capitalizarNombre(base || fallback);
+        }
+
+        function imagenDeItem(item) {
+            if (!item) return "";
+            if (typeof item === "string") return item;
+            return item.imagen || item.src || item.url || "";
+        }
+
+        function toAbsoluteImageUrl(path) {
+            if (!path) return "/assets/placeholder.webp";
+            if (/^https?:\/\//i.test(path)) return path;
+
+            const cleanedPath = path.replace(/^\.\//, "").replace(/^\//, "");
+            if (cleanedPath.startsWith("assets/")) {
+                return `https://cdn.jsdelivr.net/gh/${repoOwner}/${repoName}@${repoBranch}/${cleanedPath}`;
+            }
+
+            return `${window.location.origin}/${cleanedPath}`;
+        }
+
+        async function cargarJsonLocales(paths) {
+            const data = await Promise.all(
+                paths.map(async (path) => {
+                    try {
+                        const res = await fetch(`https://raw.githubusercontent.com/${repoOwner}/${repoName}/${repoBranch}/${path}?t=${Date.now()}`);
+                        if (!res.ok) return null;
+                        return await res.json();
+                    } catch (error) {
+                        return null;
+                    }
+                })
+            );
+
+            return data.filter(Boolean);
+        }
+
+        function expandirLote(lote, loteIndex) {
+            if (!lote || !Array.isArray(lote.grupos)) return [];
+
+            const genero = lote.genero || "Unisex";
+            const categoria = lote.categoria || "Cadenas";
+            const piezas = [];
+
+            lote.grupos.forEach((grupo, grupoIndex) => {
+                const tipo = grupo?.tipo || lote.tipo || "Oro Nacional";
+                const imagenes = Array.isArray(grupo?.imagenes) ? grupo.imagenes : [];
+
+                imagenes.forEach((item, imagenIndex) => {
+                    const imagen = imagenDeItem(item);
+                    if (!imagen) return;
+
+                    piezas.push({
+                        id: `lote-${loteIndex}-${grupoIndex}-${imagenIndex}`,
+                        nombre: nombreDesdeImagen(imagen, `${categoria} ${imagenIndex + 1}`),
+                        tipo,
+                        genero,
+                        categoria,
+                        imagen
+                    });
+                });
+            });
+
+            return piezas;
+        }
+
+        function renderPieza(joya) {
+            const root = document.getElementById("piezaRoot");
+
+            root.className = "pieza-card";
+            root.innerHTML = `
+                <div class="pieza-media">
+                    <img src="${toAbsoluteImageUrl(joya.imagen)}" alt="${joya.nombre}">
+                </div>
+            `;
+        }
+
+        async function initPieza() {
+            const root = document.getElementById("piezaRoot");
+            const params = new URLSearchParams(window.location.search);
+            const tipo = params.get("tipo") || "";
+            const categoria = params.get("categoria") || "";
+            const genero = params.get("genero") || "";
+            const pieza = params.get("pieza") || "";
+
+            const lotes = await cargarJsonLocales(lotesOroLocales);
+            const joyas = lotes.flatMap(expandirLote).filter((joya) => joya.imagen);
+
+            const encontrada = joyas.find((joya) => {
+                const mismoNombre = slugWhatsApp(joya.nombre) === pieza;
+                const mismoTipo = !tipo || joya.tipo === tipo;
+                const mismaCategoria = !categoria || joya.categoria === categoria;
+                const mismoGenero = !genero || joya.genero === genero;
+                return mismoNombre && mismoTipo && mismaCategoria && mismoGenero;
+            });
+
+            if (!encontrada) {
+                root.textContent = "No se encontro la pieza solicitada.";
+                return;
+            }
+
+            renderPieza(encontrada);
+        }
+
+        initPieza();
+    </script>
+</body>
+</html>

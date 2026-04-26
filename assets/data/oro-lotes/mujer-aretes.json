@@ -1,0 +1,71 @@
+{
+  "genero": "Mujer",
+  "categoria": "Aretes",
+  "grupos": [
+    {
+      "tipo": "Oro Nacional",
+      "imagenes": [
+        {
+          "imagen": "assets/images/04d82b4b-964c-4245-b061-ba29137c0120.jpg"
+        },
+        {
+          "imagen": "assets/images/1bd425f5-b795-47d7-b341-a42f9d9e28ec.jpg"
+        },
+        {
+          "imagen": "assets/images/0e7f306b-31bb-4489-b12c-ebaf6d266edd.jpg"
+        },
+        {
+          "imagen": "assets/images/0363c496-d4b6-4154-91ec-897ca091f11d.jpg"
+        },
+        {
+          "imagen": "assets/images/0eb4b259-df8c-4ca2-ab7c-879d272eded3.jpg"
+        },
+        {
+          "imagen": "assets/images/17a5a1b5-292d-4fe3-8ebc-09b5de48d873.jpg"
+        },
+        {
+          "imagen": "assets/images/02aaafcb-bd6e-4376-a639-d1d50ce11762.jpg"
+        },
+        {
+          "imagen": "assets/images/28d84c54-6253-42fc-b608-3d8f4627f481.jpg"
+        },
+        {
+          "imagen": "assets/images/17e3947e-c59b-412b-a52c-f66c31a0853d.jpg"
+        },
+        {
+          "imagen": "assets/images/29fca3dd-5b27-4e2b-ba83-afb279543324.jpg"
+        },
+        {
+          "imagen": "assets/images/1f2ccf1b-f13c-4487-bd68-9e9ff351eafc.jpg"
+        },
+        {
+          "imagen": "assets/images/3b7ac118-de4a-4635-9cd1-5bade826d2ba.jpg"
+        },
+        {
+          "imagen": "assets/images/7a75f310-00c2-4e6a-a5e7-e7135584fd4d.jpg"
+        },
+        {
+          "imagen": "assets/images/7fe93f9f-9ed7-4db1-95f1-4acaae6f3f55.jpg"
+        },
+        {
+          "imagen": "assets/images/1c855257-679f-4993-b600-408dd8298a70.jpg"
+        },
+        {
+          "imagen": "assets/images/656a6d7d-b228-4542-96ca-e0dffe454fa7.jpg"
+        },
+        {
+          "imagen": "assets/images/3f3c683f-fd9e-4455-b7a3-b7574ba77b01.jpg"
+        },
+        {
+          "imagen": "assets/images/536b16cc-d3f3-472e-a69e-2aa573e150f3.jpg"
+        },
+        {
+          "imagen": "assets/images/photo_1_2026-04-22_13-21-23.jpg"
+        },
+        {
+          "imagen": "assets/images/photo_2_2026-04-22_13-21-23.jpg"
+        }
+      ]
+    }
+  ]
+}

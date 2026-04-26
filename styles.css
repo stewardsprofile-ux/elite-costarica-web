@@ -1,0 +1,495 @@
+/* ==========================================================================
+   ESTILOS GENERALES Y BASE
+   ========================================================================== */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #10171f;
+    margin: 0;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 35px 10px;
+    background: #10171f;
+}
+
+.logo {
+    width: 65px;
+    display: block;
+    margin: 0 auto 12px auto;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+}
+
+.titulo {
+    font-size: 32px;
+    margin: 10px 0 35px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+/* ==========================================================================
+   1. BUSCADOR Y BOTÓN IA (ALINEADOS)
+   ========================================================================== */
+.search-container {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 0 15px;
+}
+
+.search-box-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 650px;
+}
+
+#search {
+    flex: 2;
+    padding: 14px 25px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #10171f;
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    transition: 0.3s;
+    min-width: 0;
+}
+
+#search:focus {
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn-ia-search {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid rgba(230, 194, 0, 0.4);
+    padding: 12px 15px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: 0.3s all;
+    white-space: nowrap;
+}
+
+.btn-ia-search:hover {
+    background: #ffffff;
+    color: #10171f;
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(230, 194, 0, 0.2);
+}
+
+/* ==========================================================================
+   2. FILTROS PRINCIPALES - ESTILO GLASS
+   ========================================================================== */
+.filtros-principales {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filtros-principales button {
+    padding: 10px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.filtros-principales button.active {
+    background: #ffffff;
+    color: #10171f;
+    border-color: #ffffff;
+}
+
+.tipo-oro.active, .gen-oro.active, .cat-oro.active {
+    background: #E6C200 !important;
+    color: #10171f !important;
+    border-color: #E6C200 !important;
+    box-shadow: 0 0 15px rgba(230, 194, 0, 0.4);
+}
+
+.btn-oro, .btn-seccion {
+    padding: 10px 22px;
+    border: 2px solid #E6C200 !important;
+    border-radius: 25px;
+    background: rgba(230, 194, 0, 0.1) !important;
+    color: #E6C200 !important;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(230, 194, 0, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seccion-oro-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 650px;
+    margin: 14px auto 10px;
+    padding: 0 15px;
+}
+
+.seccion-oro-container .btn-seccion {
+    width: 100%;
+    min-height: 50px;
+    font-size: 15px;
+}
+
+/* ==========================================================================
+   3. SECCIÓN DE MARCAS (FLECHAS MINIMALISTAS ACTUALIZADAS)
+   ========================================================================== */
+.contenedor-marcas-scroll {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto 14px auto;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.grid-marcas {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 12px;
+    padding: 10px 35px;
+    scrollbar-width: none;
+}
+.grid-marcas::-webkit-scrollbar { display: none; }
+
+.btn-marca {
+    flex: 0 0 auto;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    font-size: 11px;
+    color: #a0aab4;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.flecha-scroll {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    width: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    position: absolute;
+    font-size: 22px;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+.flecha-scroll:first-of-type { left: 0; }
+.flecha-scroll:last-of-type { right: 0; }
+
+.btn-testimonios {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 12px 26px;
+    background: #10171f;
+    color: #E6C200;
+    text-decoration: none;
+    border-radius: 999px;
+    border: 1px solid rgba(230, 194, 0, 0.38);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: none;
+    transition: 0.3s;
+}
+
+.btn-testimonios:hover {
+    background: rgba(230, 194, 0, 0.08);
+}
+
+/* ==========================================================================
+   4. CATALOGO PRINCIPAL
+   ========================================================================== */
+#catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card img { width: 100%; height: 300px; object-fit: contain; }
+.card h3 { font-size: 15px; color: #10171f; margin: 15px 0; font-weight: 700; height: 40px; }
+
+.btn {
+    background: #10171f;
+    color: #ffffff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* ==========================================================================
+   5. CATALOGO ORO
+   ========================================================================== */
+#catalogo-oro {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.card-oro-full {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(230, 194, 0, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+}
+
+.header-card-oro {
+    background: rgba(230, 194, 0, 0.1);
+    color: #E6C200;
+    text-align: center;
+    padding: 8px;
+    font-size: 0.75em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.card-oro-full img { width: 100%; height: auto; display: block; }
+
+.info-card-oro { padding: 20px; text-align: center; }
+.info-card-oro h3 { color: #fff; margin: 0 0 10px 0; font-size: 1.2em; text-transform: uppercase; }
+.info-card-oro p { color: #aaa; font-size: 0.9em; margin-bottom: 20px; white-space: pre-line; }
+
+.btn-cotizar-oro-full {
+    background: #E6C200;
+    color: #000;
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    font-weight: 900;
+    width: 100%;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   6. ASISTENTE IA (BORDE A BORDE TOTAL Y CENTRADO VERTICAL)
+   ========================================================================== */
+#bot-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #10171f; /* Fondo sólido para que se vea estático */
+    display: none;
+    justify-content: center;
+    align-items: center; /* CENTRADO VERTICAL TOTAL */
+    z-index: 9999;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.bot-content {
+    width: 100%;
+    /* Quitamos el min-height: 100vh para que el contenido se agrupe al centro */
+    background: #10171f;
+    border: none;
+    padding: 40px 0px; 
+    text-align: center;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Asegura que el contenido interno esté centrado */
+}
+
+.bot-content h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Las opciones ahora tocarán los bordes si no les pones margen */
+.btn-pregunta {
+    display: block;
+    width: 90%; 
+    max-width: 450px; 
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin: 0 auto 15px auto; /* Centradas horizontalmente con margen abajo */
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s;
+    box-sizing: border-box;
+}
+
+/* Ajuste para que la 'X' de cerrar no quede pegada al notch del iPhone */
+.bot-content .close-modal { 
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+/* ==========================================================================
+   RESPONSIVE MÓVIL (CORRECCIÓN DE ANCHO Y CENTRADO)
+   ========================================================================== */
+@media (max-width: 600px) {
+    #bot-modal {
+        padding: 0;
+        align-items: center; /* Mantiene el centrado vertical en móvil */
+    }
+
+    .bot-content {
+        width: 100%;
+        padding: 20px 0px; 
+    }
+
+    .btn-pregunta {
+        width: 92%; /* Ajustado para que se vea centrado y casi de borde a borde */
+    }
+
+    /* Respetamos el resto de tu código de marcas y buscador */
+    #catalogo { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
+    .card img { height: 180px; }
+    .titulo { font-size: 24px; margin: 8px 0 18px 0; }
+    .logo { margin: 0 auto 8px auto; }
+    .search-container { margin-bottom: 14px; padding: 0 12px; }
+    .search-box-wrapper { flex-direction: column; width: 100%; gap: 10px; }
+    .btn-ia-search { width: 100%; flex: none; }
+    .filtros-principales { gap: 5px; margin-bottom: 8px; }
+    .filtros-principales button { padding: 8px 10px; font-size: 11px; }
+    .seccion-oro-container { margin: 8px auto 6px; padding: 0 12px; }
+    .contenedor-marcas-scroll { margin: 0 auto 2px auto; }
+    .grid-marcas { gap: 8px; padding: 6px 26px; }
+    .btn-marca { padding: 8px 14px; font-size: 10px; }
+    .btn-testimonios { margin-top: 6px; padding: 10px 22px; }
+}
+
+/* ==========================================================================
+   FLOTANTES Y RESPONSIVE
+   ========================================================================== */
+#btnArriba {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 48px;
+    height: 48px;
+    display: none;
+    z-index: 1000;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid rgba(230, 194, 0, 0.36);
+    background: rgba(230, 194, 0, 0.14);
+    color: #E6C200;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+@media (max-width: 600px) {
+    #catalogo { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
+    .card img { height: 180px; }
+    .titulo { font-size: 24px; }
+    .search-box-wrapper { flex-direction: column; width: 100%; }
+    #search { max-width: 100%; width: 100%; }
+    .btn-ia-search { width: 100%; flex: none; }
+
+    header > .filtros-principales:first-of-type {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 5px;
+        align-items: center;
+    }
+
+    header > .filtros-principales:first-of-type button {
+        width: 100%;
+        min-width: 0;
+        padding: 8px 4px;
+        font-size: 10px;
+    }
+
+    .btn-oro, .btn-seccion {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        display: flex;
+        padding: 9px 0;
+        font-size: 13px;
+    }
+    
+    .bot-content {
+        padding: 40px 0px;
+    }
+    
+    .btn-pregunta {
+        width: 92%;
+    }
+}
+
+@media (max-width: 600px) {
+    header { padding: 22px 10px 18px; }
+}

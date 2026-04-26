@@ -1,0 +1,268 @@
+{
+  "genero": "Mujer",
+  "categoria": "Argollas",
+  "grupos": [
+    {
+      "tipo": "Oro Italiano",
+      "imagenes": [
+        {
+          "imagen": "assets/images/34e9cee6-58ab-476b-b529-950e545e1dcf.jpg"
+        },
+        {
+          "imagen": "assets/images/3c048e0e-67e8-42e1-b75e-0b4d27a3b755.jpg"
+        },
+        {
+          "imagen": "assets/images/1dd60e10-d569-4b4b-b8d3-18aacf98b51d.jpg"
+        },
+        {
+          "imagen": "assets/images/1dabf843-e21c-4d0b-92be-ab274a5e6e00.jpg"
+        },
+        {
+          "imagen": "assets/images/3d14be32-72c0-42c0-b52f-28b958544163.jpg"
+        },
+        {
+          "imagen": "assets/images/0c22af2a-3db3-44de-8631-d34b92d6ba9f.jpg"
+        },
+        {
+          "imagen": "assets/images/1b0534bf-8b6f-4892-b174-4494f8733875.jpg"
+        },
+        {
+          "imagen": "assets/images/1a36be1a-75f2-451a-8eba-745204fadc3a.jpg"
+        },
+        {
+          "imagen": "assets/images/07025b76-67d0-48c5-9e4e-482d83bc5389.jpg"
+        },
+        {
+          "imagen": "assets/images/0d38eccc-f2eb-47f3-8ace-14aa16294083.jpg"
+        },
+        {
+          "imagen": "assets/images/44295382-98f1-48b5-901f-fdcbf7b7dd92.jpg"
+        },
+        {
+          "imagen": "assets/images/1007d21a-4b2f-4e70-8ba1-ff02bb8525ec.jpg"
+        },
+        {
+          "imagen": "assets/images/180b6339-fe07-4e82-adcc-846e15a38338.jpg"
+        },
+        {
+          "imagen": "assets/images/1e98f420-d2d9-4a63-a504-1984a9b34e2c.jpg"
+        },
+        {
+          "imagen": "assets/images/10d47e18-05ec-407e-9493-4503c88c5270.jpg"
+        },
+        {
+          "imagen": "assets/images/120a1dc7-df85-406f-a032-8e4cc8745348.jpg"
+        },
+        {
+          "imagen": "assets/images/46be585c-7cee-4ed4-8221-0ea98edfa682.jpg"
+        },
+        {
+          "imagen": "assets/images/4abff0ae-713c-4e2e-a000-0688dc181f63.jpg"
+        },
+        {
+          "imagen": "assets/images/4b91ee53-de7a-4d7e-9882-e3b2e61026a2.jpg"
+        },
+        {
+          "imagen": "assets/images/57f7ea56-de92-47a2-b12c-2fcd33cf8400.jpg"
+        },
+        {
+          "imagen": "assets/images/6196a0ff-ebed-429f-9d3a-452f8c04e3ff.jpg"
+        },
+        {
+          "imagen": "assets/images/7331f546-33c3-4da7-901a-beef1f4f6de4.jpg"
+        },
+        {
+          "imagen": "assets/images/77d1815d-25bd-4c3f-81b0-2bb49bf29cb1.jpg"
+        },
+        {
+          "imagen": "assets/images/7a927c95-54f0-4ad5-86a0-6b6fd925ee67.jpg"
+        },
+        {
+          "imagen": "assets/images/7c4d9c4e-db6a-44c9-95a0-0cd92d20e860.jpg"
+        },
+        {
+          "imagen": "assets/images/7e2a3f85-f57b-4909-9c79-37947fd4a821.jpg"
+        },
+        {
+          "imagen": "assets/images/7e254992-2adc-4a98-b76e-6129f4b9224c.jpg"
+        },
+        {
+          "imagen": "assets/images/82adb8b4-07ba-4a30-bf35-6a0d44a184a7.jpg"
+        },
+        {
+          "imagen": "assets/images/8c5a44af-c316-46fb-a3b2-330c0f4fb948.jpg"
+        },
+        {
+          "imagen": "assets/images/8a44c515-bf23-4f6b-9457-a03727451a2e.jpg"
+        },
+        {
+          "imagen": "assets/images/8d45cd7e-5a5e-417e-8fb5-d1207dbb85b6.jpg"
+        },
+        {
+          "imagen": "assets/images/9e0531c1-0692-4c91-8c8f-f6f56c84e345.jpg"
+        },
+        {
+          "imagen": "assets/images/9ed2bfe2-7f2e-41db-bb21-5f61a932c23a.jpg"
+        },
+        {
+          "imagen": "assets/images/a3f4decc-85eb-41f4-883e-9ebc6d79f45c.jpg"
+        },
+        {
+          "imagen": "assets/images/a0f16c74-86e4-4234-b2ca-4b08b3cbe33a.jpg"
+        },
+        {
+          "imagen": "assets/images/a694a46b-6b31-4fc8-8d60-bd07ae4bf737.jpg"
+        },
+        {
+          "imagen": "assets/images/a865d47f-23f4-4000-99e8-74bb81f73f97.jpg"
+        },
+        {
+          "imagen": "assets/images/a88eb101-a5e4-49a9-9b21-66ee676365e8.jpg"
+        },
+        {
+          "imagen": "assets/images/a8948cc7-3fad-4921-a60e-cc82225684c9.jpg"
+        },
+        {
+          "imagen": "assets/images/a95143f9-b2e7-4138-be25-fafadc323c9a.jpg"
+        },
+        {
+          "imagen": "assets/images/adbc2732-90df-44e8-aa36-ceeb1dfbb6e7.jpg"
+        },
+        {
+          "imagen": "assets/images/b0566475-f59d-4980-8f60-a3c146278fa1.jpg"
+        },
+        {
+          "imagen": "assets/images/b058ddcc-2359-462d-9bee-52806cf23791.jpg"
+        },
+        {
+          "imagen": "assets/images/bac04ee4-e932-4fef-b0b7-b04155653be0.jpg"
+        },
+        {
+          "imagen": "assets/images/b2c253c4-ac64-4dc5-874d-45a77d5fbeeb.jpg"
+        },
+        {
+          "imagen": "assets/images/bb398687-d552-4f11-bb70-fdfb9a008d84.jpg"
+        },
+        {
+          "imagen": "assets/images/c525f3e2-ea98-4b09-ac27-8b550fed504b.jpg"
+        },
+        {
+          "imagen": "assets/images/c0830835-4179-424a-a668-727190182949.jpg"
+        },
+        {
+          "imagen": "assets/images/c1643c98-66c6-4d07-9d9f-0f8163d1735d.jpg"
+        },
+        {
+          "imagen": "assets/images/ca5034d7-a316-4b48-9f18-2ba8ce5432fb.jpg"
+        },
+        {
+          "imagen": "assets/images/ce7d2dc8-a4fe-40c9-a644-e4a34141464d.jpg"
+        },
+        {
+          "imagen": "assets/images/d09a8296-c115-4cce-9cb5-92200569149f.jpg"
+        },
+        {
+          "imagen": "assets/images/d273c652-1391-4bf4-95ca-6a13d09ac12e.jpg"
+        },
+        {
+          "imagen": "assets/images/d9f71aae-8fc4-499f-a878-813f8c8f792c.jpg"
+        },
+        {
+          "imagen": "assets/images/db517c4a-0f74-41b3-b943-b595046789f7.jpg"
+        },
+        {
+          "imagen": "assets/images/e38a0505-6b66-4c22-9474-20d6ad0668c3.jpg"
+        },
+        {
+          "imagen": "assets/images/e64287ab-0eab-447d-ab56-bff566c1c646.jpg"
+        },
+        {
+          "imagen": "assets/images/ef832d56-bc20-4f92-8001-a98b60eeb718.jpg"
+        },
+        {
+          "imagen": "assets/images/f43d1454-94e0-403e-b449-b1ca32affbd0.jpg"
+        },
+        {
+          "imagen": "assets/images/f125d135-ec17-4e7c-b1cc-4ad0700cd501.jpg"
+        },
+        {
+          "imagen": "assets/images/f4c74cf0-d22b-422b-9d1b-61dba4e1228e.jpg"
+        },
+        {
+          "imagen": "assets/images/f5268a27-197c-40e5-8119-03846c485e92.jpg"
+        },
+        {
+          "imagen": "assets/images/f53dba2c-31e7-4c6b-afc1-67449d083836.jpg"
+        },
+        {
+          "imagen": "assets/images/faef048d-819e-45b6-bbde-9011b4272ffd.jpg"
+        },
+        {
+          "imagen": "assets/images/ff5383e7-3a99-456f-b631-b6dba081fc45.jpg"
+        },
+        {
+          "imagen": "assets/images/ff845fb3-cf2d-48bc-a955-c2ab885dfcb8.jpg"
+        }
+      ]
+    },
+    {
+      "tipo": "Oro Nacional",
+      "imagenes": [
+        {
+          "imagen": "assets/images/012eff72-c71e-4b47-9d32-3e6f0ed95389.jpg"
+        },
+        {
+          "imagen": "assets/images/2a3effc1-3284-4238-8f7d-2d388677ac66.jpg"
+        },
+        {
+          "imagen": "assets/images/468aed42-5894-4570-9509-dcd9f4fa0adf.jpg"
+        },
+        {
+          "imagen": "assets/images/6082834f-6837-40c4-b9b6-0f359d0e662b.jpg"
+        },
+        {
+          "imagen": "assets/images/6d9dcc49-f12c-4c76-b9c9-c4434a849264-1.jpg"
+        },
+        {
+          "imagen": "assets/images/6d9dcc49-f12c-4c76-b9c9-c4434a849264.jpg"
+        },
+        {
+          "imagen": "assets/images/98eb280f-7b11-43d6-96b0-a00209fa0dc5.jpg"
+        },
+        {
+          "imagen": "assets/images/840a95ee-4280-448d-973a-b253e175d001.jpg"
+        },
+        {
+          "imagen": "assets/images/207b992c-12ba-4564-8056-c6e7926f7ff1.jpg"
+        },
+        {
+          "imagen": "assets/images/5a695d35-4bb5-4ce6-88ea-27060ab7e35b.jpg"
+        },
+        {
+          "imagen": "assets/images/0e0b6577-4ded-454a-8877-3df99a75693e.jpg"
+        },
+        {
+          "imagen": "assets/images/6bc57746-d8c8-4678-896e-c9325a774e1d.jpg"
+        },
+        {
+          "imagen": "assets/images/9f08ddbc-adb8-42a0-b957-cf74b96e710d.jpg"
+        },
+        {
+          "imagen": "assets/images/b684e108-854a-469f-a5ca-6eea8352a707.jpg"
+        },
+        {
+          "imagen": "assets/images/a8e7d011-3c73-418f-8bb7-8d305daa2327.jpg"
+        },
+        {
+          "imagen": "assets/images/bb8df4f3-6244-447a-85fd-bd9a7a6fd680.jpg"
+        },
+        {
+          "imagen": "assets/images/d38c775a-bd25-4ca8-b24f-015bccb7a605.jpg"
+        },
+        {
+          "imagen": "assets/images/e3cc2a56-75cd-4934-9da0-966e401d1524.jpg"
+        }
+      ]
+    }
+  ]
+}

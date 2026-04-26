@@ -1,0 +1,89 @@
+{
+  "genero": "Niños",
+  "categoria": "Graduacion",
+  "grupos": [
+    {
+      "tipo": "Oro Nacional",
+      "imagenes": [
+        {
+          "imagen": "assets/images/1471f220-7bb3-4ed4-8351-bb954511319b.jpg"
+        },
+        {
+          "imagen": "assets/images/082e8931-4cf7-4271-9494-cc08fa5b113a.jpg"
+        },
+        {
+          "imagen": "assets/images/139dd266-3f94-4ef0-8f63-83b20ac4f4d8.jpg"
+        },
+        {
+          "imagen": "assets/images/58ca0e5b-ac15-43ce-805f-7774eb8d8c6b.jpg"
+        },
+        {
+          "imagen": "assets/images/160ab23a-0cfd-4af2-97dd-01aacbb8d4c9.jpg"
+        },
+        {
+          "imagen": "assets/images/753ac531-0247-4590-aa6a-ada83c80e250.jpg"
+        },
+        {
+          "imagen": "assets/images/29aa0a3b-fa4b-4c3e-bf07-b20d1539cb32.jpg"
+        },
+        {
+          "imagen": "assets/images/2a41cf10-45c4-4c44-87b5-9ae896c9ceb4.jpg"
+        },
+        {
+          "imagen": "assets/images/3b9dd55f-648a-40b3-85e3-b78ab3670637.jpg"
+        },
+        {
+          "imagen": "assets/images/38e4cd9d-a4c7-4e35-a2d0-ed5760ebb259.jpg"
+        },
+        {
+          "imagen": "assets/images/5358b670-ff81-4089-b496-a93d4563deed.jpg"
+        },
+        {
+          "imagen": "assets/images/08fd39a4-5445-4e43-a9de-15640a492f99.jpg"
+        },
+        {
+          "imagen": "assets/images/75a73896-88be-4390-b50f-64ce382d6e02.jpg"
+        },
+        {
+          "imagen": "assets/images/0735e6e1-d2fb-4e8b-a199-85805c3a513c.jpg"
+        },
+        {
+          "imagen": "assets/images/749ace9f-4e93-47b4-84fd-fdde41681b74.jpg"
+        },
+        {
+          "imagen": "assets/images/562d2a3f-922b-4eb6-a3fd-1887ca05545c.jpg"
+        },
+        {
+          "imagen": "assets/images/75bd1916-ebe0-4341-9e49-b6bfb6dc35e1.jpg"
+        },
+        {
+          "imagen": "assets/images/82b9dcab-bb59-4c8a-aebe-9fa4168f0490.jpg"
+        },
+        {
+          "imagen": "assets/images/9e736906-db1c-40fe-a24c-9dc5a253e525.jpg"
+        },
+        {
+          "imagen": "assets/images/a76d6e1a-d96a-448d-9ef6-9f082ab7ac40.jpg"
+        },
+        {
+          "imagen": "assets/images/8d64d3bf-26d7-4ab5-a562-25329490c230.jpg"
+        },
+        {
+          "imagen": "assets/images/b0073c30-9c51-4c66-8555-a67fdbbc5afb.jpg"
+        },
+        {
+          "imagen": "assets/images/b72ccec3-2394-480c-aa28-4ff5abcf7f52.jpg"
+        },
+        {
+          "imagen": "assets/images/b9852c52-fde6-4f48-86cd-730ebeceb0df.jpg"
+        },
+        {
+          "imagen": "assets/images/e3c239ef-0bb8-4cf5-a7e1-3c6e9d0d64c4.jpg"
+        },
+        {
+          "imagen": "assets/images/IMG_6878.JPG"
+        }
+      ]
+    }
+  ]
+}

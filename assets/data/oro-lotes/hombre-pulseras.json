@@ -1,0 +1,109 @@
+{
+  "genero": "Hombre",
+  "categoria": "Pulseras",
+  "grupos": [
+    {
+      "tipo": "Oro Italiano",
+      "imagenes": [
+        {
+          "imagen": "assets/images/35e85e88-31dd-4a94-9871-acc86a1c2860.jpg"
+        },
+        {
+          "imagen": "assets/images/49026577-9272-4e83-9c9c-d5a867628819.jpg"
+        },
+        {
+          "imagen": "assets/images/51dd63e6-7a06-4116-bff4-0f9890499590.jpg"
+        },
+        {
+          "imagen": "assets/images/68a141f6-17f7-4f9e-9f26-a665121cf365.jpg"
+        },
+        {
+          "imagen": "assets/images/194f26ef-dd51-407b-99e8-fc0b03050cbe.jpg"
+        },
+        {
+          "imagen": "assets/images/2cfcce67-d100-4b14-8200-c7e9506e2532.jpg"
+        },
+        {
+          "imagen": "assets/images/6978b120-9b97-4801-9be6-6eac6df0bbfe.jpg"
+        },
+        {
+          "imagen": "assets/images/833c05de-f2bd-4e62-ba5d-8a7d1e78e50f.jpg"
+        },
+        {
+          "imagen": "assets/images/80a58f50-e222-4b96-81a1-f25ab813c43c.jpg"
+        },
+        {
+          "imagen": "assets/images/91ba9f3f-b4e1-4f26-b267-add0eed3b6ff.jpg"
+        },
+        {
+          "imagen": "assets/images/93da121e-2a09-4b89-8820-e3126b744e0a.jpg"
+        },
+        {
+          "imagen": "assets/images/95a0ecc5-1d61-44da-8484-3ab819370de1.jpg"
+        },
+        {
+          "imagen": "assets/images/7e8aaedc-79ef-41c4-9c4a-d1ea59be8e23.jpg"
+        },
+        {
+          "imagen": "assets/images/98819d43-c0c9-4428-8a37-e45d38345310.jpg"
+        },
+        {
+          "imagen": "assets/images/4ad4ae97-3fc9-44cf-8b29-b2cf9ce2c2df.jpg"
+        },
+        {
+          "imagen": "assets/images/eae6e8b7-041d-4b36-aefd-d6b3e236710d.jpg"
+        }
+      ]
+    },
+    {
+      "tipo": "Oro Nacional",
+      "imagenes": [
+        {
+          "imagen": "assets/images/1.102.jpeg"
+        },
+        {
+          "imagen": "assets/images/ba01a65d-ee08-4504-86d2-005f00260a2b.jpg"
+        },
+        {
+          "imagen": "assets/images/2246acf5-61d6-43e8-8534-3df95539a625.jpg"
+        },
+        {
+          "imagen": "assets/images/d3ac6e0c-7f57-4553-a86b-0c3d359e9229.jpg"
+        },
+        {
+          "imagen": "assets/images/e2a9e65b-555c-49d9-bf15-a0333fc4ef6b.jpg"
+        },
+        {
+          "imagen": "assets/images/1.069.jpeg"
+        },
+        {
+          "imagen": "assets/images/IMG_7953.JPG"
+        },
+        {
+          "imagen": "assets/images/1.386.jpeg"
+        },
+        {
+          "imagen": "assets/images/0525af7e-63d5-4e57-8a45-fbcd4e3e9137.jpg"
+        },
+        {
+          "imagen": "assets/images/bb1db6c4-9f04-44ce-94b6-c3d933a45f40.jpg"
+        },
+        {
+          "imagen": "assets/images/1.325.jpeg"
+        },
+        {
+          "imagen": "assets/images/dd959908-f3d0-409e-bdf1-2f5c3ba43261.jpg"
+        },
+        {
+          "imagen": "assets/images/607815f4-0316-4cd5-86ee-604fcc1d2716.jpg"
+        },
+        {
+          "imagen": "assets/images/IMG_2405.JPG"
+        },
+        {
+          "imagen": "assets/images/IMG_4430.JPEG"
+        }
+      ]
+    }
+  ]
+}
