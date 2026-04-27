@@ -79,7 +79,7 @@ header {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: radial-gradient(circle at center, rgba(8,9,12,0.34) 0%, rgba(8,9,12,0.82) 74%);
+    background: radial-gradient(circle at center, rgba(8,9,12,0) 0%, rgba(8,9,12,0.18) 62%, rgba(8,9,12,0.46) 100%);
     pointer-events: none;
 }
 
