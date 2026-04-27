@@ -156,11 +156,39 @@ function render() {
     lista.forEach(p => {
         const card = document.createElement("div");
         card.className = "card";
-        card.innerHTML = `
-            <img src="${p.Image}" loading="lazy" onclick="verImagen('${p.Image}')" onerror="this.src='assets/placeholder.webp'">
-            <h3>${p.Title}</h3>
-            <button class="btn" onclick="cotizar('${p.Title}','${p.Image}')">Cotizar</button>
-        `;
+
+        const metaParts = [p.marca, p.genero || p.categoria || p.tipo]
+            .filter(Boolean)
+            .filter((value, index, arr) => arr.indexOf(value) === index)
+            .slice(0, 2);
+
+        const header = document.createElement("div");
+        header.className = "card-header-perfume";
+        header.textContent = (metaParts.length ? metaParts.join(" | ") : "ELITE PARFUMS").toUpperCase();
+
+        const img = document.createElement("img");
+        img.src = p.Image;
+        img.alt = p.Title || "Perfume Elite";
+        img.loading = "lazy";
+        img.onclick = () => verImagen(p.Image);
+        img.onerror = () => { img.src = "assets/placeholder.webp"; };
+
+        const info = document.createElement("div");
+        info.className = "card-info-perfume";
+
+        const title = document.createElement("h3");
+        title.textContent = p.Title;
+
+        const button = document.createElement("button");
+        button.className = "btn btn-cotizar-perfume";
+        button.textContent = "Cotizar";
+        button.onclick = () => cotizar(p.Title, p.Image);
+
+        info.appendChild(title);
+        info.appendChild(button);
+        card.appendChild(header);
+        card.appendChild(img);
+        card.appendChild(info);
         catalogo.appendChild(card);
     });
 }
