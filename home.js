@@ -42,6 +42,7 @@ if (homeScroll) {
 
 const years = [2023, 2024, 2025, 2026];
 const homeYears = document.getElementById("homeYears");
+const homeTestimonialTracks = [];
 const repoOwner = "stewardsprofile-ux";
 const repoName = "elite-catalogo";
 const repoBranch = "main";
@@ -86,7 +87,27 @@ function buildHomeYear(year, images) {
     });
 
     section.appendChild(track);
+    homeTestimonialTracks.push(track);
     return section;
+}
+
+function startHomeTestimonialsAutoAdvance() {
+    if (!homeTestimonialTracks.length) return;
+
+    setInterval(() => {
+        homeTestimonialTracks.forEach((track, index) => {
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            if (maxScroll <= 0) return;
+
+            const step = Math.max(track.clientWidth * 0.52, 150);
+            const isNearEnd = track.scrollLeft + step >= maxScroll - 8;
+
+            track.scrollTo({
+                left: isNearEnd ? 0 : track.scrollLeft + step,
+                behavior: "smooth"
+            });
+        });
+    }, 3800);
 }
 
 async function loadHomeTestimonials() {
@@ -106,9 +127,11 @@ async function loadHomeTestimonials() {
     );
 
     homeYears.innerHTML = "";
+    homeTestimonialTracks.length = 0;
     responses.slice(0, 3).forEach(({ year, images }) => {
         homeYears.appendChild(buildHomeYear(year, images));
     });
+    startHomeTestimonialsAutoAdvance();
 }
 
 loadHomeTestimonials();
