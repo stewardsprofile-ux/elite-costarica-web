@@ -39,9 +39,9 @@ header {
 }
 
 .home-logo {
-    width: 86px;
+    width: clamp(150px, 13vw, 180px);
     display: block;
-    margin: 0 auto 18px;
+    margin: 0 auto 10px;
     filter: drop-shadow(0 12px 24px rgba(0,0,0,0.42));
 }
 
@@ -109,7 +109,7 @@ header {
 }
 
 .logo {
-    width: 65px;
+    width: clamp(120px, 10vw, 150px);
     display: block;
     margin: 0 auto 12px auto;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
@@ -491,6 +491,7 @@ header {
    ========================================================================== */
 @media (max-width: 600px) {
     .home-shell { align-items: flex-start; padding-top: 70px; }
+    .home-logo { width: 136px; }
     .home-actions { grid-template-columns: 1fr; }
     .home-card { min-height: 92px; border-radius: 16px; }
 
@@ -512,7 +513,7 @@ header {
     #catalogo { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
     .card img { height: 180px; }
     .titulo { font-size: 24px; margin: 8px 0 18px 0; }
-    .logo { margin: 0 auto 8px auto; }
+    .logo { width: 112px; margin: 0 auto 8px auto; }
     .search-container { margin-bottom: 14px; padding: 0 12px; }
     .search-box-wrapper { flex-direction: column; width: 100%; gap: 10px; }
     .btn-ia-search { width: 100%; flex: none; }

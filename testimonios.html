@@ -49,7 +49,7 @@
         }
 
         .hero img {
-            width: 88px;
+            width: clamp(120px, 10vw, 150px);
             height: auto;
             display: block;
             margin: 0 auto 10px;
@@ -217,6 +217,7 @@
         }
 
         @media (max-width: 860px) {
+            .hero img { width: 112px; }
             .year-head { align-items: flex-start; flex-direction: column; }
             .slide { min-width: 76vw; }
             .lightbox { padding: 20px 14px; }
