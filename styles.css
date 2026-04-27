@@ -74,13 +74,15 @@ header {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .home-card {
-    min-height: 154px;
-    border-radius: 24px;
+    min-height: 112px;
+    border-radius: 18px;
     border: 1px solid rgba(230, 194, 0, 0.44);
-    background: linear-gradient(145deg, rgba(255,255,255,0.11), rgba(255,255,255,0.035));
+    background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
     color: #E6C200;
     text-decoration: none;
     display: flex;
@@ -99,10 +101,11 @@ header {
 }
 
 .home-card-label {
-    font-size: clamp(22px, 4vw, 34px);
-    font-weight: 900;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(18px, 3vw, 27px);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.14em;
 }
 
 .logo {
@@ -115,10 +118,11 @@ header {
 .titulo {
     font-size: 32px;
     margin: 10px 0 35px 0;
-    letter-spacing: 2px;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #ffffff;
-    font-weight: 800;
+    color: #E6C200;
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 400;
 }
 
 /* ==========================================================================
@@ -488,7 +492,7 @@ header {
 @media (max-width: 600px) {
     .home-shell { align-items: flex-start; padding-top: 70px; }
     .home-actions { grid-template-columns: 1fr; }
-    .home-card { min-height: 126px; border-radius: 20px; }
+    .home-card { min-height: 92px; border-radius: 16px; }
 
     #bot-modal {
         padding: 0;
