@@ -365,14 +365,15 @@ header {
 
 .card-header-perfume {
     background: rgba(12, 13, 18, 0.96);
-    color: #E6C200;
-    padding: 14px 12px;
+    color: #ffffff;
+    padding: 16px 18px;
     font-family: 'Cinzel', Georgia, serif;
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    min-height: 46px;
+    line-height: 1.35;
+    min-height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -393,7 +394,7 @@ header {
     padding: 18px 20px 20px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    justify-content: flex-end;
     flex: 1;
 }
 
@@ -621,8 +622,8 @@ header {
 @media (max-width: 600px) {
     #catalogo { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
     .card img { height: 220px; padding: 12px; }
-    .card-header-perfume { min-height: 42px; padding: 11px 8px; font-size: 0.62rem; }
-    .card-info-perfume { padding: 14px 12px 14px; gap: 12px; }
+    .card-header-perfume { min-height: 58px; padding: 10px 8px; font-size: 0.64rem; letter-spacing: 0.04em; }
+    .card-info-perfume { padding: 14px 12px 14px; }
     .card h3 { font-size: 0.78rem; min-height: 50px; }
     .card .btn-cotizar-perfume { padding: 12px; font-size: 0.84rem; }
     .titulo { font-size: 24px; }

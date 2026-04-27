@@ -157,14 +157,9 @@ function render() {
         const card = document.createElement("div");
         card.className = "card";
 
-        const metaParts = [p.marca, p.genero || p.categoria || p.tipo]
-            .filter(Boolean)
-            .filter((value, index, arr) => arr.indexOf(value) === index)
-            .slice(0, 2);
-
         const header = document.createElement("div");
         header.className = "card-header-perfume";
-        header.textContent = (metaParts.length ? metaParts.join(" | ") : "ELITE PARFUMS").toUpperCase();
+        header.textContent = (p.Title || "ELITE PARFUMS").toUpperCase();
 
         const img = document.createElement("img");
         img.src = p.Image;
@@ -176,15 +171,11 @@ function render() {
         const info = document.createElement("div");
         info.className = "card-info-perfume";
 
-        const title = document.createElement("h3");
-        title.textContent = p.Title;
-
         const button = document.createElement("button");
         button.className = "btn btn-cotizar-perfume";
         button.textContent = "Cotizar";
         button.onclick = () => cotizar(p.Title, p.Image);
 
-        info.appendChild(title);
         info.appendChild(button);
         card.appendChild(header);
         card.appendChild(img);
