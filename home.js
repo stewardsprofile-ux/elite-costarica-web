@@ -42,7 +42,8 @@ if (homeScroll) {
 
 const years = [2023, 2024, 2025, 2026];
 const homeYears = document.getElementById("homeYears");
-const homeTestimonialTracks = [];
+const homeTestimonialGroups = [];
+let homeTestimonialsTimer = null;
 const repoOwner = "stewardsprofile-ux";
 const repoName = "elite-catalogo";
 const repoBranch = "main";
@@ -75,37 +76,51 @@ function buildHomeYear(year, images) {
         return section;
     }
 
-    const track = document.createElement("div");
-    track.className = "home-testimonial-track";
+    const urls = images.map((path) => homeTestimonialUrl(path));
+    const stage = document.createElement("div");
+    stage.className = "home-testimonial-stage";
 
-    images.slice(0, 8).forEach((path, index) => {
+    const slots = urls.slice(0, 2).map((url, index) => {
         const img = document.createElement("img");
-        img.src = homeTestimonialUrl(path);
+        img.src = url;
         img.alt = `Cliente satisfecho ${year} ${index + 1}`;
         img.loading = "lazy";
-        track.appendChild(img);
+        stage.appendChild(img);
+        return img;
     });
 
-    section.appendChild(track);
-    homeTestimonialTracks.push(track);
+    section.appendChild(stage);
+    homeTestimonialGroups.push({
+        year,
+        urls,
+        slots,
+        index: slots.length
+    });
     return section;
 }
 
 function startHomeTestimonialsAutoAdvance() {
-    if (!homeTestimonialTracks.length) return;
+    if (!homeTestimonialGroups.length) return;
+    if (homeTestimonialsTimer) clearInterval(homeTestimonialsTimer);
 
-    setInterval(() => {
-        homeTestimonialTracks.forEach((track, index) => {
-            const maxScroll = track.scrollWidth - track.clientWidth;
-            if (maxScroll <= 0) return;
+    homeTestimonialsTimer = setInterval(() => {
+        homeTestimonialGroups.forEach((group) => {
+            if (group.urls.length <= group.slots.length) return;
 
-            const step = Math.max(track.clientWidth * 0.52, 150);
-            const isNearEnd = track.scrollLeft + step >= maxScroll - 8;
-
-            track.scrollTo({
-                left: isNearEnd ? 0 : track.scrollLeft + step,
-                behavior: "smooth"
+            group.slots.forEach((slot) => {
+                slot.classList.add("is-fading");
             });
+
+            setTimeout(() => {
+                group.slots.forEach((slot, slotIndex) => {
+                    const imageIndex = (group.index + slotIndex) % group.urls.length;
+                    slot.src = group.urls[imageIndex];
+                    slot.alt = `Cliente satisfecho ${group.year} ${imageIndex + 1}`;
+                    slot.classList.remove("is-fading");
+                });
+
+                group.index = (group.index + group.slots.length) % group.urls.length;
+            }, 520);
         });
     }, 3800);
 }
@@ -127,7 +142,7 @@ async function loadHomeTestimonials() {
     );
 
     homeYears.innerHTML = "";
-    homeTestimonialTracks.length = 0;
+    homeTestimonialGroups.length = 0;
     responses.slice(0, 3).forEach(({ year, images }) => {
         homeYears.appendChild(buildHomeYear(year, images));
     });
