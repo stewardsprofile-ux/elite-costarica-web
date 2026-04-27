@@ -143,7 +143,7 @@ async function loadHomeTestimonials() {
 
     homeYears.innerHTML = "";
     homeTestimonialGroups.length = 0;
-    responses.slice(0, 3).forEach(({ year, images }) => {
+    responses.forEach(({ year, images }) => {
         homeYears.appendChild(buildHomeYear(year, images));
     });
     startHomeTestimonialsAutoAdvance();
