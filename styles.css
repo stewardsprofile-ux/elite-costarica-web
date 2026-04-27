@@ -1,9 +1,13 @@
 /* ==========================================================================
    ESTILOS GENERALES Y BASE
    ========================================================================== */
+html,
+body {
+    background: #0f0f10;
+}
+
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #0f0f10;
     margin: 0;
     color: #ffffff;
     overflow-x: hidden;
@@ -17,9 +21,7 @@ header {
 
 .home-page {
     min-height: 100vh;
-    background:
-        radial-gradient(circle at 50% 0%, rgba(230, 194, 0, 0.12), transparent 34rem),
-        #0f0f10;
+    background: #0f0f10;
 }
 
 .home-shell {
@@ -92,7 +94,7 @@ header {
 .home-card:hover {
     transform: translateY(-4px);
     border-color: #E6C200;
-    background: rgba(230, 194, 0, 0.12);
+    background: linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.045));
 }
 
 .home-card-label {
@@ -174,7 +176,7 @@ header {
     background: #ffffff;
     color: #10171f;
     border-color: #ffffff;
-    box-shadow: 0 0 15px rgba(230, 194, 0, 0.2);
+    box-shadow: none;
 }
 
 /* ==========================================================================
@@ -219,7 +221,7 @@ header {
     padding: 10px 22px;
     border: 2px solid #E6C200 !important;
     border-radius: 25px;
-    background: rgba(230, 194, 0, 0.1) !important;
+    background: transparent !important;
     color: #E6C200 !important;
     cursor: pointer;
     backdrop-filter: blur(10px);
@@ -228,7 +230,7 @@ header {
     font-weight: 800;
     font-size: 14px;
     text-transform: uppercase;
-    box-shadow: 0 0 10px rgba(230, 194, 0, 0.2);
+    box-shadow: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -324,7 +326,7 @@ header {
 }
 
 .btn-testimonios:hover {
-    background: rgba(230, 194, 0, 0.08);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 /* ==========================================================================
