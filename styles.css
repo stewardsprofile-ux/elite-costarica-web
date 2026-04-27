@@ -367,10 +367,9 @@ header {
     background: rgba(12, 13, 18, 0.96);
     color: #ffffff;
     padding: 16px 18px;
-    font-family: 'Cinzel', Georgia, serif;
     font-size: 0.92rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-weight: 800;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1.35;
     min-height: 70px;
