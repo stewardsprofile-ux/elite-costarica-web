@@ -11,8 +11,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="home-page">
-    <main class="home-shell">
-        <section class="home-hero" aria-labelledby="home-title">
+    <main class="home-scroll">
+        <section class="home-shell home-panel" aria-labelledby="home-title">
+            <div class="home-bg-carousel" aria-hidden="true">
+                <div class="home-bg-slide active" style="background-image: url('assets/home-bg-gold-chains.png');"></div>
+                <div class="home-bg-slide" style="background-image: url('assets/home-bg-gold-rings.png');"></div>
+            </div>
+
+            <div class="home-hero">
             <img class="home-logo" src="assets/logo.png" alt="Elite Costa Rica">
             <p class="home-kicker">LUJO A TU NIVEL</p>
             <h1 id="home-title">Catalogos exclusivos</h1>
@@ -26,7 +32,22 @@
                     <span class="home-card-label">Oro 10k</span>
                 </a>
             </div>
+            </div>
+        </section>
+
+        <section class="home-testimonials home-panel" id="home-testimonials" aria-labelledby="home-testimonials-title">
+            <div class="home-testimonials-head">
+                <img class="home-testimonials-logo" src="assets/logo.png" alt="Elite Costa Rica">
+                <p class="home-kicker">CLIENTES ELITE</p>
+                <h2 id="home-testimonials-title">Testimonios</h2>
+                <p>Historias reales en una vista compacta. Desliza las capturas o visita la seccion completa.</p>
+                <a class="home-testimonials-link" href="/testimonios">Ver todos los testimonios</a>
+            </div>
+
+            <div class="home-years" id="homeYears"></div>
         </section>
     </main>
+
+    <script src="home.js" defer></script>
 </body>
 </html>
