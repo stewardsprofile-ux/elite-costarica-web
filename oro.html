@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .btn-regresar { position: absolute; top: 20px; left: 20px; background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 12px; font-weight: 600; text-transform: uppercase; transition: all 0.3s ease; z-index: 10; max-width: 220px; line-height: 1.2; }
-        .btn-regresar:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; border-color: rgba(255, 255, 255, 0.3); }
+        .btn-regresar { position: absolute; top: 20px; left: 20px; background: rgba(8, 9, 12, 0.82); color: rgba(255, 255, 255, 0.68); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 12px; font-weight: 600; text-transform: uppercase; transition: all 0.3s ease; z-index: 10; max-width: 220px; line-height: 1.2; }
+        .btn-regresar:hover { background: rgba(12, 13, 18, 0.96); color: #ffffff; border-color: rgba(255, 255, 255, 0.3); }
         .titulo-oro { color: #E6C200 !important; font-family: 'Cinzel', Georgia, serif; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; margin-top: 20px; }
         
         /* Estilos de botones activos para todas las categorías de filtro */
         .tipo-oro.active, .gen-oro.active, .cat-oro.active { 
             background: #E6C200 !important; 
-            color: #0f0f10 !important; 
+            color: #08090C !important; 
             border-color: #E6C200 !important; 
             box-shadow: none; 
         }
@@ -31,7 +31,7 @@
             padding: 12px 26px;
             border-radius: 999px;
             border: 1px solid rgba(230, 194, 0, 0.38);
-            background: #0f0f10;
+            background: #08090C;
             color: #E6C200;
             text-decoration: none;
             font-weight: 800;
@@ -39,7 +39,7 @@
             text-transform: none;
             backdrop-filter: blur(10px);
         }
-        .btn-testimonios-oro:hover { background: rgba(255, 255, 255, 0.04); }
+        .btn-testimonios-oro:hover { background: rgba(12, 13, 18, 0.96); }
         header { position: relative; text-align: center; padding: 40px 10px; }
 
         /* Catalogo en grid amplio */
@@ -53,7 +53,7 @@
         }
 
         .card-oro-full {
-            background: #161d26;
+            background: #08090C;
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             overflow: hidden;
@@ -63,7 +63,7 @@
         }
 
         .header-card-oro {
-            background: #1a212b;
+            background: #0C0D12;
             color: #E6C200;
             text-align: center;
             padding: 12px 14px;
@@ -77,7 +77,7 @@
             width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
-            background: #161d26;
+            background: #08090C;
             display: block;
             cursor: pointer;
         }
@@ -88,7 +88,7 @@
         }
 
         .btn-cotizar-oro-full {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(8, 9, 12, 0.86);
             color: #E6C200;
             border: 1px solid rgba(230, 194, 0, 0.32);
             backdrop-filter: blur(10px);
@@ -101,7 +101,7 @@
         }
 
         .btn-cotizar-oro-full:hover {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(12, 13, 18, 0.96);
         }
 
         @media (max-width: 1100px) {
@@ -208,7 +208,7 @@
     <img id="imagenGrande" src="" style="max-width:95%; max-height:95%; border: 2px solid #E6C200; border-radius: 10px;">
 </div>
 
-<button id="btnArribaOro" title="Ir arriba" style="display:none; position:fixed; right:25px; bottom:25px; width:52px; height:52px; border-radius:50%; border:1px solid rgba(230, 194, 0, 0.34); background:#0f0f10; color:#E6C200; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); box-shadow:none; font-size:20px; font-weight:800; cursor:pointer; z-index:1001;">↑</button>
+<button id="btnArribaOro" title="Ir arriba" style="display:none; position:fixed; right:25px; bottom:25px; width:52px; height:52px; border-radius:50%; border:1px solid rgba(230, 194, 0, 0.34); background:#08090C; color:#E6C200; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); box-shadow:none; font-size:20px; font-weight:800; cursor:pointer; z-index:1001;">↑</button>
 
 <script src="script_oro.js" defer></script>
 </body>
