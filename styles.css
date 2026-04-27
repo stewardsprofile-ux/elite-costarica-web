@@ -3,7 +3,7 @@
    ========================================================================== */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #1C1C1E;
+    background: #0f0f10;
     margin: 0;
     color: #ffffff;
     overflow-x: hidden;
@@ -12,14 +12,14 @@ body {
 header {
     text-align: center;
     padding: 35px 10px;
-    background: #1C1C1E;
+    background: #0f0f10;
 }
 
 .home-page {
     min-height: 100vh;
     background:
         radial-gradient(circle at 50% 0%, rgba(230, 194, 0, 0.12), transparent 34rem),
-        #1C1C1E;
+        #0f0f10;
 }
 
 .home-shell {
@@ -310,7 +310,7 @@ header {
     justify-content: center;
     margin-top: 8px;
     padding: 12px 26px;
-    background: #1C1C1E;
+    background: #0f0f10;
     color: #E6C200;
     text-decoration: none;
     border-radius: 999px;
@@ -352,7 +352,7 @@ header {
 
 .btn {
     background: #E6C200;
-    color: #1C1C1E;
+    color: #0f0f10;
     border: none;
     padding: 14px 20px;
     border-radius: 12px;
@@ -421,7 +421,7 @@ header {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #1C1C1E; /* Fondo solido para que se vea estatico */
+    background: #0f0f10; /* Fondo solido para que se vea estatico */
     display: none;
     justify-content: center;
     align-items: center; /* CENTRADO VERTICAL TOTAL */
@@ -434,7 +434,7 @@ header {
 .bot-content {
     width: 100%;
     /* Quitamos el min-height: 100vh para que el contenido se agrupe al centro */
-    background: #1C1C1E;
+    background: #0f0f10;
     border: none;
     padding: 40px 0px; 
     text-align: center;
