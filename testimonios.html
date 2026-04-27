@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Testimonios | Elite Costa Rica</title>
+    <title>Clientes Satisfechos | Elite Costa Rica</title>
     <link rel="icon" type="image/png" href="assets/logo.png">
     <style>
         :root {
@@ -237,7 +237,7 @@
 
         <section class="hero">
             <img src="assets/logo.png" alt="Elite">
-            <h1>Testimonios</h1>
+            <h1>Clientes Satisfechos</h1>
             <p>Historias reales de clientes que ya vivieron la experiencia Elite. Revisa cada año con calma o deja que el carrusel avance solo.</p>
         </section>
 
@@ -247,7 +247,7 @@
     <div class="lightbox" id="lightbox">
         <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior">←</button>
         <button class="lightbox-close" id="lightboxClose">X</button>
-        <img id="lightboxImage" src="" alt="Testimonio ampliado">
+        <img id="lightboxImage" src="" alt="Cliente satisfecho ampliado">
         <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Siguiente">→</button>
     </div>
 
@@ -310,7 +310,7 @@
             if (!images.length) {
                 const empty = document.createElement("div");
                 empty.className = "empty";
-                empty.textContent = "Todavía no hay testimonios cargados para este año.";
+                empty.textContent = "Todavía no hay clientes satisfechos cargados para este año.";
                 section.appendChild(empty);
                 return section;
             }
@@ -327,7 +327,7 @@
 
                 const image = document.createElement("img");
                 image.src = absoluteUrl(path);
-                image.alt = `Testimonio ${year} ${index + 1}`;
+                image.alt = `Cliente satisfecho ${year} ${index + 1}`;
                 image.loading = "lazy";
                 image.style.cursor = "zoom-in";
                 image.addEventListener("click", () => {
@@ -401,7 +401,7 @@
         function renderLightboxImage() {
             if (!currentGallery.length) return;
             lightboxImage.src = currentGallery[currentIndex];
-            lightboxImage.alt = `Testimonio ampliado ${currentIndex + 1}`;
+            lightboxImage.alt = `Cliente satisfecho ampliado ${currentIndex + 1}`;
         }
 
         function showPrevImage() {
@@ -420,7 +420,7 @@
             currentGallery = gallery;
             currentIndex = index;
             renderLightboxImage();
-            lightboxImage.alt = `Testimonio ${year} ${index + 1}`;
+            lightboxImage.alt = `Cliente satisfecho ${year} ${index + 1}`;
             lightbox.style.display = "flex";
             stopAutoAdvance();
         }

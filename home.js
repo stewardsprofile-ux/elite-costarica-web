@@ -69,7 +69,7 @@ function buildHomeYear(year, images) {
     if (!images.length) {
         const empty = document.createElement("p");
         empty.className = "home-year-empty";
-        empty.textContent = "Pronto agregaremos testimonios de este ano.";
+        empty.textContent = "Pronto agregaremos clientes satisfechos de este ano.";
         section.appendChild(empty);
         return section;
     }
@@ -80,7 +80,7 @@ function buildHomeYear(year, images) {
     images.slice(0, 8).forEach((path, index) => {
         const img = document.createElement("img");
         img.src = homeTestimonialUrl(path);
-        img.alt = `Testimonio ${year} ${index + 1}`;
+        img.alt = `Cliente satisfecho ${year} ${index + 1}`;
         img.loading = "lazy";
         track.appendChild(img);
     });

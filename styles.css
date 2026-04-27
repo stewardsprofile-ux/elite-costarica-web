@@ -162,11 +162,11 @@ header {
 
 .home-testimonials {
     box-sizing: border-box;
-    padding: 28px 32px 34px;
+    padding: 22px 32px 26px;
     background: #08090C;
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    gap: 24px;
+    gap: 18px;
 }
 
 .home-testimonials-head {
@@ -176,7 +176,7 @@ header {
 }
 
 .home-testimonials-logo {
-    width: clamp(92px, 9vw, 132px);
+    width: clamp(78px, 7vw, 112px);
     display: block;
     margin: 0 auto 8px;
     filter: drop-shadow(0 12px 24px rgba(0,0,0,0.42));
@@ -184,14 +184,14 @@ header {
 
 .home-testimonials h2 {
     margin: 0;
-    font-size: clamp(34px, 5vw, 66px);
+    font-size: clamp(32px, 4.4vw, 58px);
     line-height: 0.96;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
 
 .home-testimonials p {
-    margin: 14px auto 0;
+    margin: 10px auto 0;
     max-width: 680px;
     color: rgba(255,255,255,0.72);
     line-height: 1.5;
@@ -199,7 +199,7 @@ header {
 
 .home-testimonials-link {
     display: inline-flex;
-    margin-top: 14px;
+    margin-top: 12px;
     padding: 10px 18px;
     border: 1px solid rgba(230, 194, 0, 0.38);
     border-radius: 999px;
@@ -225,11 +225,11 @@ header {
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 24px;
     background: rgba(8, 9, 12, 0.92);
-    padding: 16px 16px 18px;
+    padding: 14px 16px 16px;
 }
 
 .home-year-card h3 {
-    margin: 0 0 14px;
+    margin: 0 0 10px;
     color: #E6C200;
     font-size: clamp(20px, 2vw, 28px);
     letter-spacing: 0.1em;
@@ -240,7 +240,7 @@ header {
     gap: 14px;
     overflow-x: auto;
     scrollbar-width: none;
-    height: min(40vh, 350px);
+    height: min(34vh, 300px);
     scroll-snap-type: x mandatory;
 }
 
@@ -251,7 +251,7 @@ header {
 .home-testimonial-track img {
     flex: 0 0 min(42vw, 220px);
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 18px;
     border: 1px solid rgba(255,255,255,0.08);
     background: #0C0D12;
@@ -714,13 +714,13 @@ header {
     .home-logo { width: 136px; }
     .home-actions { grid-template-columns: 1fr; }
     .home-card { min-height: 92px; border-radius: 16px; }
-    .home-testimonials { padding: 24px 16px; gap: 16px; }
-    .home-testimonials-logo { width: 88px; }
+    .home-testimonials { padding: 18px 16px; gap: 12px; }
+    .home-testimonials-logo { width: 76px; }
     .home-testimonials p { font-size: 0.92rem; }
     .home-years { grid-template-columns: 1fr; gap: 14px; overflow-y: auto; }
     .home-year-card { border-radius: 18px; padding: 14px; }
-    .home-testimonial-track { height: 190px; }
-    .home-testimonial-track img { flex-basis: 138px; border-radius: 14px; }
+    .home-testimonial-track { height: 170px; }
+    .home-testimonial-track img { flex-basis: 138px; border-radius: 14px; object-fit: contain; }
 
     #bot-modal {
         padding: 0;
