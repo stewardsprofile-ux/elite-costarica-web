@@ -3,7 +3,7 @@
    ========================================================================== */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #10171f;
+    background: #1C1C1E;
     margin: 0;
     color: #ffffff;
     overflow-x: hidden;
@@ -12,7 +12,94 @@ body {
 header {
     text-align: center;
     padding: 35px 10px;
-    background: #10171f;
+    background: #1C1C1E;
+}
+
+.home-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(230, 194, 0, 0.12), transparent 34rem),
+        #1C1C1E;
+}
+
+.home-shell {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 18px;
+    box-sizing: border-box;
+}
+
+.home-hero {
+    width: min(760px, 100%);
+    text-align: center;
+}
+
+.home-logo {
+    width: 86px;
+    display: block;
+    margin: 0 auto 18px;
+    filter: drop-shadow(0 12px 24px rgba(0,0,0,0.42));
+}
+
+.home-kicker {
+    margin: 0 0 12px;
+    color: #E6C200;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    font-size: 12px;
+}
+
+.home-hero h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(38px, 7vw, 72px);
+    line-height: 0.95;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.home-copy {
+    margin: 22px auto 34px;
+    max-width: 440px;
+    color: rgba(255,255,255,0.72);
+    font-size: 17px;
+}
+
+.home-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.home-card {
+    min-height: 154px;
+    border-radius: 24px;
+    border: 1px solid rgba(230, 194, 0, 0.44);
+    background: linear-gradient(145deg, rgba(255,255,255,0.11), rgba(255,255,255,0.035));
+    color: #E6C200;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 22px 60px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+}
+
+.home-card:hover {
+    transform: translateY(-4px);
+    border-color: #E6C200;
+    background: rgba(230, 194, 0, 0.12);
+}
+
+.home-card-label {
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .logo {
@@ -223,7 +310,7 @@ header {
     justify-content: center;
     margin-top: 8px;
     padding: 12px 26px;
-    background: #10171f;
+    background: #1C1C1E;
     color: #E6C200;
     text-decoration: none;
     border-radius: 999px;
@@ -264,8 +351,8 @@ header {
 .card h3 { font-size: 15px; color: #10171f; margin: 15px 0; font-weight: 700; height: 40px; }
 
 .btn {
-    background: #10171f;
-    color: #ffffff;
+    background: #E6C200;
+    color: #1C1C1E;
     border: none;
     padding: 14px 20px;
     border-radius: 12px;
@@ -334,7 +421,7 @@ header {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #10171f; /* Fondo sólido para que se vea estático */
+    background: #1C1C1E; /* Fondo solido para que se vea estatico */
     display: none;
     justify-content: center;
     align-items: center; /* CENTRADO VERTICAL TOTAL */
@@ -347,7 +434,7 @@ header {
 .bot-content {
     width: 100%;
     /* Quitamos el min-height: 100vh para que el contenido se agrupe al centro */
-    background: #10171f;
+    background: #1C1C1E;
     border: none;
     padding: 40px 0px; 
     text-align: center;
@@ -396,6 +483,10 @@ header {
    RESPONSIVE MÓVIL (CORRECCIÓN DE ANCHO Y CENTRADO)
    ========================================================================== */
 @media (max-width: 600px) {
+    .home-shell { align-items: flex-start; padding-top: 70px; }
+    .home-actions { grid-template-columns: 1fr; }
+    .home-card { min-height: 126px; border-radius: 20px; }
+
     #bot-modal {
         padding: 0;
         align-items: center; /* Mantiene el centrado vertical en móvil */

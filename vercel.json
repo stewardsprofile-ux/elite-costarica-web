@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/catalogo.html",
+      "destination": "/catalogo",
+      "permanent": true
+    },
+    {
       "source": "/oro.html",
       "destination": "/oro",
       "permanent": true
