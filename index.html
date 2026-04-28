@@ -51,6 +51,37 @@
 
             <div class="home-years" id="homeYears"></div>
         </section>
+
+        <section class="home-advisor home-panel" id="home-advisor" aria-labelledby="home-advisor-title">
+            <div class="home-advisor-bg" aria-hidden="true"></div>
+
+            <div class="home-advisor-shell">
+                <div class="home-advisor-head">
+                    <img class="home-advisor-logo" src="assets/logo.png" alt="Elite Costa Rica">
+                    <p class="home-kicker">ASESOR ELITE IA</p>
+                    <h2 id="home-advisor-title">Encuentra tu perfume ideal</h2>
+                    <p>No sabes cual perfume elegir?<br>Nuestro Asesor Elite IA encuentra opciones para ti segun tu estilo, ocasion y personalidad.</p>
+                </div>
+
+                <button class="home-advisor-cta" id="startAdvisor" type="button">Encuentra mi perfume</button>
+                <p class="home-advisor-note">Recomendaciones basadas en perfumes reales del catalogo Elite.</p>
+
+                <div class="home-advisor-quiz" id="homeAdvisorQuiz" hidden>
+                    <div class="home-advisor-progress" id="homeAdvisorProgress"></div>
+                    <h3 id="homeAdvisorQuestion">Pregunta</h3>
+                    <div class="home-advisor-options" id="homeAdvisorOptions"></div>
+                </div>
+
+                <div class="home-advisor-results" id="homeAdvisorResults" hidden>
+                    <div class="home-advisor-results-head">
+                        <p class="home-kicker">SELECCION ELITE</p>
+                        <h3>Perfumes recomendados</h3>
+                    </div>
+                    <div class="home-advisor-grid" id="homeAdvisorGrid"></div>
+                    <button class="home-advisor-reset" id="restartAdvisor" type="button">Probar de nuevo</button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="home.js" defer></script>

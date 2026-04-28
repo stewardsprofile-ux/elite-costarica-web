@@ -305,6 +305,199 @@ header {
     color: rgba(255,255,255,0.6);
 }
 
+.home-advisor {
+    position: relative;
+    box-sizing: border-box;
+    padding: 34px 32px;
+    background: #08090C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.home-advisor-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 50% 42%, rgba(230,194,0,0.09), transparent 28%),
+        radial-gradient(circle at 14% 76%, rgba(230,194,0,0.12), transparent 24%),
+        linear-gradient(115deg, rgba(8,9,12,0.70), rgba(8,9,12,0.36)),
+        url("assets/home-bg-perfumes-left.png");
+    background-size: cover;
+    background-position: left center;
+    opacity: 0.72;
+    transform: scale(1.03);
+    pointer-events: none;
+}
+
+.home-advisor::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(circle at center, rgba(8,9,12,0.08) 0%, rgba(8,9,12,0.50) 68%, rgba(8,9,12,0.78) 100%);
+    pointer-events: none;
+}
+
+.home-advisor-shell {
+    position: relative;
+    z-index: 2;
+    width: min(1040px, 100%);
+    text-align: center;
+}
+
+.home-advisor-logo {
+    width: clamp(86px, 8vw, 124px);
+    display: block;
+    margin: 0 auto 8px;
+    filter: drop-shadow(0 12px 24px rgba(0,0,0,0.42));
+}
+
+.home-advisor h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(34px, 5vw, 66px);
+    line-height: 0.96;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.home-advisor-head p:not(.home-kicker),
+.home-advisor-note {
+    color: rgba(255,255,255,0.76);
+    line-height: 1.55;
+}
+
+.home-advisor-head p:not(.home-kicker) {
+    max-width: 720px;
+    margin: 16px auto 0;
+    font-size: clamp(16px, 2vw, 20px);
+}
+
+.home-advisor-cta {
+    width: min(980px, 100%);
+    margin: 28px auto 10px;
+    padding: 22px 28px;
+    border-radius: 22px;
+    border: 1px solid rgba(230,194,0,0.52);
+    background: linear-gradient(145deg, rgba(36,39,43,0.28), rgba(8,9,12,0.20));
+    color: #E6C200;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(20px, 3vw, 32px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 22px 54px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.home-advisor-cta:hover {
+    border-color: #E6C200;
+    background: linear-gradient(145deg, rgba(48,52,56,0.34), rgba(8,9,12,0.26));
+}
+
+.home-advisor-note {
+    margin: 0 auto;
+    font-size: 0.95rem;
+}
+
+.home-advisor-quiz,
+.home-advisor-results {
+    width: min(980px, 100%);
+    margin: 22px auto 0;
+    padding: 22px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(8,9,12,0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.home-advisor-progress {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #E6C200 var(--advisor-progress, 0%), rgba(255,255,255,0.10) var(--advisor-progress, 0%));
+    margin-bottom: 18px;
+}
+
+.home-advisor-quiz h3,
+.home-advisor-results h3 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: clamp(22px, 3vw, 34px);
+}
+
+.home-advisor-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.home-advisor-option {
+    min-height: 58px;
+    border-radius: 16px;
+    border: 1px solid rgba(230,194,0,0.30);
+    background: rgba(8,9,12,0.72);
+    color: #ffffff;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.home-advisor-option:hover {
+    color: #E6C200;
+    border-color: rgba(230,194,0,0.72);
+}
+
+.home-advisor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.home-advisor-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(230,194,0,0.22);
+    background: rgba(8,9,12,0.82);
+}
+
+.home-advisor-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 14px;
+    background: #ffffff;
+}
+
+.home-advisor-card h4 {
+    min-height: 42px;
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.92rem;
+    line-height: 1.25;
+}
+
+.home-advisor-card button,
+.home-advisor-reset {
+    border-radius: 14px;
+    border: 1px solid rgba(230,194,0,0.44);
+    background: rgba(8,9,12,0.82);
+    color: #E6C200;
+    padding: 12px 14px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.home-advisor-reset {
+    margin-top: 16px;
+}
+
 .logo {
     width: clamp(120px, 10vw, 150px);
     display: block;
@@ -791,6 +984,19 @@ header {
     .home-testimonials-bg-slide:last-child { background-position: 82% center; }
     .home-testimonials-bg-slide.active { opacity: 0.62; }
     .home-testimonials::after { background: radial-gradient(circle at center, rgba(8,9,12,0.18) 0%, rgba(8,9,12,0.42) 70%, rgba(8,9,12,0.68) 100%); }
+    .home-advisor { align-items: flex-start; padding: 32px 16px; overflow-y: auto; }
+    .home-advisor-bg { background-size: auto 100%; background-position: 12% center; opacity: 0.82; }
+    .home-advisor-logo { width: 82px; }
+    .home-advisor h2 { font-size: clamp(32px, 11vw, 48px); }
+    .home-advisor-head p:not(.home-kicker) { font-size: 1rem; }
+    .home-advisor-cta { padding: 18px 14px; border-radius: 18px; font-size: 1.05rem; }
+    .home-advisor-quiz,
+    .home-advisor-results { padding: 16px; border-radius: 20px; }
+    .home-advisor-options { grid-template-columns: 1fr; }
+    .home-advisor-grid { grid-template-columns: 1fr; }
+    .home-advisor-card { display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: center; text-align: left; }
+    .home-advisor-card img { height: 92px; grid-row: span 2; }
+    .home-advisor-card h4 { min-height: 0; }
     .home-logo { width: 136px; }
     .home-actions { grid-template-columns: 1fr; }
     .home-card { min-height: 76px; border-radius: 16px; }
