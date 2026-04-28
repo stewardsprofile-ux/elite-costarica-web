@@ -31,6 +31,38 @@
   ],
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.eliteparfumscr.com"
+        }
+      ],
+      "destination": "https://elite-costarica.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "eliteparfumscr.com"
+        }
+      ],
+      "destination": "https://elite-costarica.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/admin",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
       "source": "/catalogo.html",
       "destination": "/catalogo",
       "permanent": true
