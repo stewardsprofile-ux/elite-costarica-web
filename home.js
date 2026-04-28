@@ -6,7 +6,7 @@ if (homeSlides.length > 1) {
         homeSlides[activeHomeSlide].classList.remove("active");
         activeHomeSlide = (activeHomeSlide + 1) % homeSlides.length;
         homeSlides[activeHomeSlide].classList.add("active");
-    }, 6500);
+    }, 2000);
 }
 
 const homeTestimonialsSlides = document.querySelectorAll(".home-testimonials-bg-slide");
@@ -17,7 +17,7 @@ if (homeTestimonialsSlides.length > 1) {
         homeTestimonialsSlides[activeHomeTestimonialsSlide].classList.remove("active");
         activeHomeTestimonialsSlide = (activeHomeTestimonialsSlide + 1) % homeTestimonialsSlides.length;
         homeTestimonialsSlides[activeHomeTestimonialsSlide].classList.add("active");
-    }, 6500);
+    }, 2000);
 }
 
 const homeScroll = document.querySelector(".home-scroll");
