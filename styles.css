@@ -131,16 +131,16 @@ header {
 }
 
 .home-card {
-    min-height: 112px;
-    border-radius: 18px;
+    min-height: 88px;
+    border-radius: 16px;
     border: 1px solid rgba(230, 194, 0, 0.44);
-    background: linear-gradient(145deg, rgba(12,13,18,0.98), rgba(8,9,12,0.96));
+    background: linear-gradient(145deg, rgba(36,39,43,0.34), rgba(8,9,12,0.28));
     color: #E6C200;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 22px 60px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.12);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.10);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
@@ -149,7 +149,7 @@ header {
 .home-card:hover {
     transform: translateY(-4px);
     border-color: #E6C200;
-    background: linear-gradient(145deg, rgba(16,17,22,0.98), rgba(8,9,12,0.96));
+    background: linear-gradient(145deg, rgba(48,52,56,0.44), rgba(8,9,12,0.34));
 }
 
 .home-card-label {
@@ -171,16 +171,26 @@ header {
     overflow: hidden;
 }
 
-.home-testimonials::before {
-    content: "";
+.home-testimonials-bg {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background-image: url("assets/home-bg-satisfied-customers.png");
+    pointer-events: none;
+}
+
+.home-testimonials-bg-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
     background-size: cover;
     background-position: center;
+    transform: scale(1);
+    transition: opacity 2000ms ease, transform 9000ms ease;
+}
+
+.home-testimonials-bg-slide.active {
     opacity: 0.5;
-    pointer-events: none;
+    transform: scale(1.06);
 }
 
 .home-testimonials::after {
@@ -743,7 +753,7 @@ header {
     .home-shell { align-items: flex-start; padding-top: 70px; }
     .home-logo { width: 136px; }
     .home-actions { grid-template-columns: 1fr; }
-    .home-card { min-height: 92px; border-radius: 16px; }
+    .home-card { min-height: 76px; border-radius: 16px; }
     .home-testimonials { padding: 18px 16px; gap: 12px; }
     .home-testimonials-logo { width: 76px; }
     .home-testimonials p { font-size: 0.92rem; }
