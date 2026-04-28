@@ -184,6 +184,7 @@ const advisorQuestion = document.getElementById("homeAdvisorQuestion");
 const advisorOptions = document.getElementById("homeAdvisorOptions");
 const advisorProgress = document.getElementById("homeAdvisorProgress");
 const advisorGrid = document.getElementById("homeAdvisorGrid");
+const homeAdvisorUp = document.getElementById("homeAdvisorUp");
 
 async function loadHomePerfumes() {
     try {
@@ -360,4 +361,10 @@ function renderAdvisorResults(perfumes) {
 
 if (startAdvisor) startAdvisor.addEventListener("click", startAdvisorFlow);
 if (restartAdvisor) restartAdvisor.addEventListener("click", startAdvisorFlow);
+if (homeAdvisorUp) {
+    homeAdvisorUp.addEventListener("click", () => {
+        const advisorSection = document.getElementById("home-advisor");
+        if (advisorSection) advisorSection.scrollTo({ top: 0, behavior: "smooth" });
+    });
+}
 loadHomePerfumes();

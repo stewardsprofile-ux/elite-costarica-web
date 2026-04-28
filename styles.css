@@ -350,6 +350,32 @@ header {
     text-align: center;
 }
 
+.home-advisor-up {
+    position: sticky;
+    top: 18px;
+    z-index: 4;
+    align-self: flex-start;
+    margin-right: -54px;
+    margin-left: 0;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    border: 1px solid rgba(230,194,0,0.46);
+    background: rgba(8,9,12,0.72);
+    color: #E6C200;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.home-advisor-up:hover {
+    border-color: #E6C200;
+    background: rgba(12,13,18,0.88);
+}
+
 .home-advisor-logo {
     width: clamp(86px, 8vw, 124px);
     display: block;
@@ -990,6 +1016,7 @@ header {
     .home-advisor-bg { background-size: auto 100%; background-position: 12% center; opacity: 0.82; }
     .home-advisor-logo { width: 82px; }
     .home-advisor h2 { font-size: clamp(32px, 11vw, 48px); }
+    .home-advisor-up { top: 12px; margin-right: -44px; width: 38px; height: 38px; font-size: 18px; }
     .home-advisor-head p:not(.home-kicker) { font-size: 1rem; }
     .home-advisor-cta { padding: 18px 14px; border-radius: 18px; font-size: 1.05rem; }
     .home-advisor-quiz,
