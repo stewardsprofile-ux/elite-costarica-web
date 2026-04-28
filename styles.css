@@ -4,6 +4,8 @@
 html,
 body {
     background: #08090C;
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 18px;
 }
 
 body {
@@ -561,6 +563,7 @@ header {
     padding: 40px;
     max-width: 1600px;
     margin: auto;
+    scroll-snap-type: y proximity;
 }
 
 .card {
@@ -574,6 +577,8 @@ header {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    scroll-snap-align: start;
+    scroll-margin-top: 18px;
 }
 
 .card-header-perfume {
@@ -660,6 +665,7 @@ header {
     padding: 10px;
     max-width: 500px;
     margin: 0 auto;
+    scroll-snap-type: y proximity;
 }
 
 .card-oro-full {
@@ -670,6 +676,8 @@ header {
     backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
+    scroll-snap-align: start;
+    scroll-margin-top: 18px;
 }
 
 .header-card-oro {
@@ -773,6 +781,16 @@ header {
    ========================================================================== */
 @media (max-width: 600px) {
     .home-shell { align-items: flex-start; padding-top: 70px; }
+    .home-bg-slide { background-size: auto 100%; }
+    .home-bg-perfumes { background-position: 12% bottom; }
+    .home-bg-gold { background-position: 88% bottom; }
+    .home-bg-slide.active { opacity: 0.62; }
+    .home-shell::after { background: radial-gradient(circle at center, rgba(8,9,12,0.08) 0%, rgba(8,9,12,0.34) 66%, rgba(8,9,12,0.58) 100%); }
+    .home-testimonials-bg-slide { background-size: auto 100%; }
+    .home-testimonials-bg-slide:first-child { background-position: 18% center; }
+    .home-testimonials-bg-slide:last-child { background-position: 82% center; }
+    .home-testimonials-bg-slide.active { opacity: 0.62; }
+    .home-testimonials::after { background: radial-gradient(circle at center, rgba(8,9,12,0.18) 0%, rgba(8,9,12,0.42) 70%, rgba(8,9,12,0.68) 100%); }
     .home-logo { width: 136px; }
     .home-actions { grid-template-columns: 1fr; }
     .home-card { min-height: 76px; border-radius: 16px; }
