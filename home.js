@@ -170,11 +170,15 @@ async function loadHomeTestimonials() {
 loadHomeTestimonials();
 
 const advisorQuestions = [
-    { id: "genero", title: "Para quien es el perfume?", options: ["Hombre", "Mujer", "Unisex", "Regalo", "Sin etiqueta"] },
-    { id: "ocasion", title: "Para que momento lo quieres?", options: ["Diario", "Trabajo", "Citas", "Fiestas", "Eventos elegantes", "Perfume principal"] },
-    { id: "objetivo", title: "Que quieres transmitir?", options: ["Limpio", "Elegante", "Sexy", "Diferente", "Exitoso", "Que me noten"] },
-    { id: "aroma", title: "Que estilo de aroma prefieres?", options: ["Muy fresco", "Fresco y dulce", "Balanceado", "Dulce", "Amaderado", "No se"] },
-    { id: "intensidad", title: "Que tan intenso lo quieres?", options: ["Suave", "Moderado", "Fuerte", "Muy fuerte", "Depende"] }
+    { id: "genero", title: "Para quien seria el perfume?", options: ["Hombre", "Mujer", "Unisex", "Es para un regalo", "Sin etiqueta"] },
+    { id: "edad", title: "En que etapa estas mas o menos?", options: ["Menos de 18", "18 - 24", "25 - 34", "35 - 44", "45 - 54", "55 o mas"] },
+    { id: "clima", title: "Donde vas a usarlo normalmente?", options: ["Mucho calor", "Clima templado", "Fresco o lluvioso", "Aire acondicionado", "Dia soleado", "De noche"] },
+    { id: "ocasion", title: "Para que momento lo quieres principalmente?", options: ["Trabajo / Diario", "Salidas normales", "Citas", "Fiestas", "Reuniones", "Eventos elegantes", "Gimnasio", "Perfume principal"] },
+    { id: "objetivo", title: "Que te gustaria que piensen de ti?", options: ["Limpio", "Elegante", "Sexy", "Diferente", "Exitoso", "Relajado", "Agradable", "Que me noten", "Fino", "Que me recuerden"] },
+    { id: "perfil_aroma", title: "Que te gusta mas en un perfume?", options: ["Muy fresco", "Fresco y dulce", "Balanceado", "Dulce", "Muy dulce", "Amaderado", "Perfume fino", "No se"] },
+    { id: "intensidad", title: "Que tan fuerte quieres que sea?", options: ["Suave", "Moderado", "Fuerte", "Muy fuerte", "Depende"] },
+    { id: "personalidad", title: "Si el perfume fuera una persona...", options: ["Elegante", "Misterioso", "Divertido", "Seguro", "Tranquilo", "Sexy", "Profesional", "Millonario", "Rebelde", "Romantico"] },
+    { id: "referencia", title: "Hay algun perfume que ya te guste mucho?", options: ["Si, tengo uno", "Quiero cambiar", "Casi no uso", "Es mi primero", "Se cuales me gustan"] }
 ];
 
 let advisorStep = 0;
@@ -251,22 +255,59 @@ function renderAdvisorQuestion() {
         button.textContent = option;
         button.addEventListener("click", () => {
             advisorAnswers[data.id] = option;
-            advisorStep++;
 
-            if (advisorStep < advisorQuestions.length) {
-                renderAdvisorQuestion();
+            if (data.id === "referencia" && option === "Si, tengo uno") {
+                askFavoritePerfume();
             } else {
-                advisorProgress.style.setProperty("--advisor-progress", "100%");
-                consultAdvisor();
+                advanceAdvisor();
             }
         });
         advisorOptions.appendChild(button);
     });
 }
 
+function advanceAdvisor() {
+    advisorStep++;
+
+    if (advisorStep < advisorQuestions.length) {
+        renderAdvisorQuestion();
+    } else {
+        advisorProgress.style.setProperty("--advisor-progress", "100%");
+        consultAdvisor();
+    }
+}
+
+function askFavoritePerfume() {
+    advisorQuestion.textContent = "Como se llama ese perfume que te encanta?";
+    advisorOptions.innerHTML = "";
+
+    const input = document.createElement("input");
+    input.className = "home-advisor-input";
+    input.id = "homeAdvisorFavorite";
+    input.type = "text";
+    input.placeholder = "Ej: Sauvage, 212 VIP...";
+
+    const button = document.createElement("button");
+    button.className = "home-advisor-option home-advisor-continue";
+    button.type = "button";
+    button.textContent = "Continuar";
+    button.addEventListener("click", () => {
+        advisorAnswers.nombre_favorito = input.value.trim() || "No especificado";
+        advanceAdvisor();
+    });
+
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") button.click();
+    });
+
+    advisorOptions.appendChild(input);
+    advisorOptions.appendChild(button);
+    input.focus();
+}
+
 function localAdvisorFallback() {
     const targetGender = (advisorAnswers.genero || "").toLowerCase();
-    const aroma = `${advisorAnswers.aroma || ""} ${advisorAnswers.objetivo || ""}`.toLowerCase();
+    const aroma = `${advisorAnswers.perfil_aroma || ""} ${advisorAnswers.objetivo || ""} ${advisorAnswers.personalidad || ""}`.toLowerCase();
 
     const scored = homePerfumes.map((perfume) => {
         const haystack = `${perfume.Title || ""} ${perfume.genero || ""} ${perfume.categoria || ""} ${perfume.tipo || ""} ${perfume.marca || ""}`.toLowerCase();
@@ -292,11 +333,12 @@ async function consultAdvisor() {
     advisorOptions.innerHTML = '<div class="home-advisor-loading">Analizando tu estilo Elite...</div>';
 
     const perfil = `
-        Cliente: ${advisorAnswers.genero}.
-        Ocasion: ${advisorAnswers.ocasion}.
-        Quiere transmitir: ${advisorAnswers.objetivo}.
-        Aroma preferido: ${advisorAnswers.aroma}.
-        Intensidad: ${advisorAnswers.intensidad}.
+        Cliente: ${advisorAnswers.genero}, etapa ${advisorAnswers.edad}.
+        Uso: ${advisorAnswers.ocasion} en clima ${advisorAnswers.clima}.
+        Busca: ${advisorAnswers.objetivo}.
+        Preferencia: ${advisorAnswers.perfil_aroma}, intensidad ${advisorAnswers.intensidad}.
+        Personalidad: ${advisorAnswers.personalidad}.
+        Favorito: ${advisorAnswers.nombre_favorito || "N/A"}.
     `;
 
     try {
