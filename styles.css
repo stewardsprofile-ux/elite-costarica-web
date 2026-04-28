@@ -324,7 +324,7 @@ header {
         radial-gradient(circle at 50% 42%, rgba(230,194,0,0.09), transparent 28%),
         radial-gradient(circle at 14% 76%, rgba(230,194,0,0.12), transparent 24%),
         linear-gradient(115deg, rgba(8,9,12,0.70), rgba(8,9,12,0.36)),
-        url("assets/home-bg-perfumes-left.png");
+        url("assets/home-bg-ai-advisor.png");
     background-size: cover;
     background-position: left center;
     opacity: 0.72;
