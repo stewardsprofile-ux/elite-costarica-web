@@ -20,6 +20,28 @@ if (homeTestimonialsSlides.length > 1) {
     }, 2000);
 }
 
+const homeAdvisorSlides = document.querySelectorAll(".home-advisor-bg-slide");
+let activeHomeAdvisorSlide = 0;
+
+if (homeAdvisorSlides.length > 1) {
+    setInterval(() => {
+        homeAdvisorSlides[activeHomeAdvisorSlide].classList.remove("active");
+        activeHomeAdvisorSlide = (activeHomeAdvisorSlide + 1) % homeAdvisorSlides.length;
+        homeAdvisorSlides[activeHomeAdvisorSlide].classList.add("active");
+    }, 2000);
+}
+
+const homeContactSlides = document.querySelectorAll(".home-contact-bg-slide");
+let activeHomeContactSlide = 0;
+
+if (homeContactSlides.length > 1) {
+    setInterval(() => {
+        homeContactSlides[activeHomeContactSlide].classList.remove("active");
+        activeHomeContactSlide = (activeHomeContactSlide + 1) % homeContactSlides.length;
+        homeContactSlides[activeHomeContactSlide].classList.add("active");
+    }, 2000);
+}
+
 const homeScroll = document.querySelector(".home-scroll");
 const homePanels = document.querySelectorAll(".home-panel");
 let snapLocked = false;

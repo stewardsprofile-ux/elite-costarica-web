@@ -322,16 +322,34 @@ header {
     position: absolute;
     inset: 0;
     z-index: 0;
+    pointer-events: none;
+}
+
+.home-advisor-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
     background:
         radial-gradient(circle at 50% 42%, rgba(230,194,0,0.09), transparent 28%),
         radial-gradient(circle at 14% 76%, rgba(230,194,0,0.12), transparent 24%),
-        linear-gradient(115deg, rgba(8,9,12,0.70), rgba(8,9,12,0.36)),
-        url("assets/home-bg-ai-advisor.png");
+        linear-gradient(115deg, rgba(8,9,12,0.70), rgba(8,9,12,0.36));
+}
+
+.home-advisor-bg-slide {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
     background-size: cover;
     background-position: center 42%;
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 2000ms ease, transform 2000ms ease;
+}
+
+.home-advisor-bg-slide.active {
     opacity: 0.72;
     transform: scale(1.03);
-    pointer-events: none;
 }
 
 .home-advisor::after {
@@ -612,15 +630,33 @@ header {
     position: absolute;
     inset: 0;
     z-index: 0;
+    pointer-events: none;
+}
+
+.home-contact-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
     background:
         radial-gradient(circle at 50% 36%, rgba(230,194,0,0.12), transparent 30%),
-        linear-gradient(115deg, rgba(8,9,12,0.78), rgba(8,9,12,0.54)),
-        url("assets/home-bg-ai-advisor.png");
+        linear-gradient(115deg, rgba(8,9,12,0.78), rgba(8,9,12,0.54));
+}
+
+.home-contact-bg-slide {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
     background-size: cover;
     background-position: center;
-    opacity: 0.48;
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 2000ms ease, transform 2000ms ease;
+}
+
+.home-contact-bg-slide.active {
+    opacity: 0.58;
     transform: scale(1.03);
-    pointer-events: none;
 }
 
 .home-contact::after {
@@ -695,15 +731,15 @@ header {
 }
 
 .home-contact-button-waze {
-    background: #32c7f0;
-    border-color: rgba(50,199,240,0.72);
-    color: #08090C;
+    background: rgba(8,9,12,0.82);
+    border-color: rgba(230,194,0,0.44);
+    color: #E6C200;
 }
 
 .home-contact-button-waze:hover {
-    background: #6bd9f5;
-    border-color: #6bd9f5;
-    color: #08090C;
+    background: rgba(12,13,18,0.92);
+    border-color: #E6C200;
+    color: #ffffff;
 }
 
 .home-contact-icon {
@@ -1264,7 +1300,9 @@ header {
     .home-testimonials-bg-slide.active { opacity: 0.62; }
     .home-testimonials::after { background: radial-gradient(circle at center, rgba(8,9,12,0.18) 0%, rgba(8,9,12,0.42) 70%, rgba(8,9,12,0.68) 100%); }
     .home-advisor { align-items: flex-start; padding: 32px 16px; overflow: hidden; }
-    .home-advisor-bg { background-size: auto 100%; background-position: center 42%; opacity: 0.82; }
+    .home-advisor-bg-slide { background-size: auto 100%; background-position: center 42%; }
+    .home-advisor-bg-slide.active { opacity: 0.82; }
+    .home-advisor-bg-slide:nth-child(2) { background-position: 58% 42%; }
     .home-advisor-logo { width: 82px; }
     .home-advisor h2 { font-size: clamp(32px, 11vw, 48px); }
     .home-advisor-head p:not(.home-kicker) { font-size: 1rem; }
@@ -1278,7 +1316,10 @@ header {
     .home-advisor-card img { height: 92px; grid-row: span 2; }
     .home-advisor-card h4 { min-height: 0; }
     .home-contact { padding: 30px 16px; }
-    .home-contact-bg { background-size: auto 100%; background-position: center; opacity: 0.58; }
+    .home-contact-bg-slide { background-size: auto 100%; background-position: center; }
+    .home-contact-bg-slide.active { opacity: 0.68; }
+    .home-contact-bg-slide:nth-child(1) { background-position: 28% center; }
+    .home-contact-bg-slide:nth-child(2) { background-position: 72% center; }
     .home-contact-logo { width: 84px; }
     .home-contact h2 { font-size: clamp(32px, 11vw, 48px); }
     .home-contact-card { padding: 22px; border-radius: 20px; gap: 14px; }
