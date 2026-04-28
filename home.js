@@ -46,6 +46,7 @@ function snapHome(direction) {
 if (homeScroll) {
     homeScroll.addEventListener("wheel", (event) => {
         if (Math.abs(event.deltaY) < 18) return;
+        if (event.target.closest(".home-advisor")) return;
         event.preventDefault();
         snapHome(event.deltaY > 0 ? 1 : -1);
     }, { passive: false });

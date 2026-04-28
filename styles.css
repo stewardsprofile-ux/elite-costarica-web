@@ -311,9 +311,11 @@ header {
     padding: 34px 32px;
     background: #08090C;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    overflow: hidden;
+    height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 .home-advisor-bg {
