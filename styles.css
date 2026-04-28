@@ -328,7 +328,7 @@ header {
         linear-gradient(115deg, rgba(8,9,12,0.70), rgba(8,9,12,0.36)),
         url("assets/home-bg-ai-advisor.png");
     background-size: cover;
-    background-position: left center;
+    background-position: center 42%;
     opacity: 0.72;
     transform: scale(1.03);
     pointer-events: none;
@@ -707,15 +707,12 @@ header {
 }
 
 .home-contact-icon {
-    width: 34px;
-    height: 34px;
+    width: 46px;
+    height: 46px;
     border-radius: 999px;
-    border: 1px solid currentColor;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.92rem;
-    line-height: 1;
+    object-fit: cover;
+    flex: 0 0 auto;
+    filter: drop-shadow(0 8px 14px rgba(0,0,0,0.34));
 }
 
 .home-socials {
@@ -752,17 +749,12 @@ header {
 }
 
 .home-social-mark {
-    width: 42px;
-    height: 42px;
+    width: 54px;
+    height: 54px;
     border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #08090C;
-    background: #E6C200;
-    font-size: 0.82rem;
-    font-weight: 950;
-    letter-spacing: 0;
+    object-fit: cover;
+    flex: 0 0 auto;
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,0.38));
 }
 
 .home-social-copy {
@@ -783,19 +775,6 @@ header {
     color: rgba(255,255,255,0.68);
     font-size: 0.78rem;
     overflow-wrap: anywhere;
-}
-
-.home-social-instagram .home-social-mark {
-    background: linear-gradient(135deg, #feda75, #d62976 52%, #4f5bd5);
-    color: #ffffff;
-}
-
-.home-social-tiktok .home-social-mark {
-    background: linear-gradient(135deg, #25f4ee, #ffffff 45%, #fe2c55);
-}
-
-.home-social-whatsapp .home-social-mark {
-    background: #25d366;
 }
 
 .logo {
@@ -1285,7 +1264,7 @@ header {
     .home-testimonials-bg-slide.active { opacity: 0.62; }
     .home-testimonials::after { background: radial-gradient(circle at center, rgba(8,9,12,0.18) 0%, rgba(8,9,12,0.42) 70%, rgba(8,9,12,0.68) 100%); }
     .home-advisor { align-items: flex-start; padding: 32px 16px; overflow: hidden; }
-    .home-advisor-bg { background-size: auto 100%; background-position: 12% center; opacity: 0.82; }
+    .home-advisor-bg { background-size: auto 100%; background-position: center 42%; opacity: 0.82; }
     .home-advisor-logo { width: 82px; }
     .home-advisor h2 { font-size: clamp(32px, 11vw, 48px); }
     .home-advisor-head p:not(.home-kicker) { font-size: 1rem; }

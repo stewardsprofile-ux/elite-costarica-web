@@ -43,14 +43,25 @@ function snapHome(direction) {
     }, 760);
 }
 
+function canScrollInside(element, deltaY) {
+    if (!element) return false;
+
+    const maxScroll = element.scrollHeight - element.clientHeight;
+    if (maxScroll <= 1) return false;
+
+    if (deltaY > 0) return element.scrollTop < maxScroll - 1;
+    return element.scrollTop > 1;
+}
+
 if (homeScroll) {
     homeScroll.addEventListener("wheel", (event) => {
         if (Math.abs(event.deltaY) < 18) return;
-        if (event.target.closest(".home-advisor-results")) return;
-        if (event.target.closest(".home-advisor")) {
-            event.preventDefault();
+        const internalScroll = event.target.closest(".home-advisor-quiz, .home-advisor-results");
+
+        if (canScrollInside(internalScroll, event.deltaY)) {
             return;
         }
+
         event.preventDefault();
         snapHome(event.deltaY > 0 ? 1 : -1);
     }, { passive: false });
