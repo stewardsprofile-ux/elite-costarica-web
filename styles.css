@@ -314,7 +314,7 @@ header {
     align-items: flex-start;
     justify-content: center;
     height: 100vh;
-    overflow-y: auto;
+    overflow: hidden;
     overscroll-behavior: contain;
 }
 
@@ -347,33 +347,8 @@ header {
     position: relative;
     z-index: 2;
     width: min(1040px, 100%);
+    max-height: 100%;
     text-align: center;
-}
-
-.home-advisor-up {
-    position: sticky;
-    top: 18px;
-    z-index: 4;
-    align-self: flex-start;
-    margin-right: -54px;
-    margin-left: 0;
-    width: 44px;
-    height: 44px;
-    flex: 0 0 auto;
-    border-radius: 999px;
-    border: 1px solid rgba(230,194,0,0.46);
-    background: rgba(8,9,12,0.72);
-    color: #E6C200;
-    font-size: 20px;
-    font-weight: 900;
-    cursor: pointer;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-.home-advisor-up:hover {
-    border-color: #E6C200;
-    background: rgba(12,13,18,0.88);
 }
 
 .home-advisor-logo {
@@ -442,6 +417,79 @@ header {
     background: rgba(8,9,12,0.72);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
+}
+
+.home-advisor-results {
+    max-height: min(52vh, 520px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-color: rgba(230,194,0,0.62) rgba(255,255,255,0.08);
+    scrollbar-width: thin;
+}
+
+.home-advisor-quiz {
+    max-height: min(50vh, 430px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.home-advisor-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+.home-advisor-quiz::-webkit-scrollbar {
+    width: 8px;
+}
+
+.home-advisor-results::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+}
+
+.home-advisor-quiz::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+}
+
+.home-advisor-results::-webkit-scrollbar-thumb {
+    background: rgba(230,194,0,0.62);
+    border-radius: 999px;
+}
+
+.home-advisor-quiz::-webkit-scrollbar-thumb {
+    background: rgba(230,194,0,0.62);
+    border-radius: 999px;
+}
+
+.home-advisor.has-advisor-quiz .home-advisor-logo,
+.home-advisor.has-advisor-results .home-advisor-logo {
+    width: clamp(68px, 6vw, 92px);
+}
+
+.home-advisor.has-advisor-quiz h2,
+.home-advisor.has-advisor-results h2 {
+    font-size: clamp(28px, 4vw, 48px);
+}
+
+.home-advisor.has-advisor-quiz .home-advisor-head p:not(.home-kicker),
+.home-advisor.has-advisor-results .home-advisor-head p:not(.home-kicker) {
+    margin-top: 10px;
+    font-size: clamp(14px, 1.6vw, 17px);
+}
+
+.home-advisor.has-advisor-results .home-advisor-head p:not(.home-kicker) {
+    display: none;
+}
+
+.home-advisor.has-advisor-quiz .home-advisor-cta,
+.home-advisor.has-advisor-quiz .home-advisor-note,
+.home-advisor.has-advisor-results .home-advisor-cta,
+.home-advisor.has-advisor-results .home-advisor-note {
+    display: none;
+}
+
+.home-advisor.has-advisor-results .home-advisor-results {
+    max-height: min(58vh, calc(100vh - 290px), 560px);
 }
 
 .home-advisor-progress {
@@ -1012,15 +1060,15 @@ header {
     .home-testimonials-bg-slide:last-child { background-position: 82% center; }
     .home-testimonials-bg-slide.active { opacity: 0.62; }
     .home-testimonials::after { background: radial-gradient(circle at center, rgba(8,9,12,0.18) 0%, rgba(8,9,12,0.42) 70%, rgba(8,9,12,0.68) 100%); }
-    .home-advisor { align-items: flex-start; padding: 32px 16px; overflow-y: auto; }
+    .home-advisor { align-items: flex-start; padding: 32px 16px; overflow: hidden; }
     .home-advisor-bg { background-size: auto 100%; background-position: 12% center; opacity: 0.82; }
     .home-advisor-logo { width: 82px; }
     .home-advisor h2 { font-size: clamp(32px, 11vw, 48px); }
-    .home-advisor-up { top: 12px; margin-right: -44px; width: 38px; height: 38px; font-size: 18px; }
     .home-advisor-head p:not(.home-kicker) { font-size: 1rem; }
     .home-advisor-cta { padding: 18px 14px; border-radius: 18px; font-size: 1.05rem; }
     .home-advisor-quiz,
     .home-advisor-results { padding: 16px; border-radius: 20px; }
+    .home-advisor.has-advisor-results .home-advisor-results { max-height: 52vh; }
     .home-advisor-options { grid-template-columns: 1fr; }
     .home-advisor-grid { grid-template-columns: 1fr; }
     .home-advisor-card { display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: center; text-align: left; }

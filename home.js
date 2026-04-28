@@ -46,7 +46,11 @@ function snapHome(direction) {
 if (homeScroll) {
     homeScroll.addEventListener("wheel", (event) => {
         if (Math.abs(event.deltaY) < 18) return;
-        if (event.target.closest(".home-advisor")) return;
+        if (event.target.closest(".home-advisor-results")) return;
+        if (event.target.closest(".home-advisor")) {
+            event.preventDefault();
+            return;
+        }
         event.preventDefault();
         snapHome(event.deltaY > 0 ? 1 : -1);
     }, { passive: false });
@@ -184,7 +188,7 @@ const advisorQuestion = document.getElementById("homeAdvisorQuestion");
 const advisorOptions = document.getElementById("homeAdvisorOptions");
 const advisorProgress = document.getElementById("homeAdvisorProgress");
 const advisorGrid = document.getElementById("homeAdvisorGrid");
-const homeAdvisorUp = document.getElementById("homeAdvisorUp");
+const advisorSection = document.getElementById("home-advisor");
 
 async function loadHomePerfumes() {
     try {
@@ -227,10 +231,11 @@ async function loadHomePerfumes() {
 function startAdvisorFlow() {
     advisorStep = 0;
     advisorAnswers = {};
+    advisorSection?.classList.remove("has-advisor-results");
+    advisorSection?.classList.add("has-advisor-quiz");
     advisorResults.hidden = true;
     advisorQuiz.hidden = false;
     renderAdvisorQuestion();
-    advisorQuiz.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
 function renderAdvisorQuestion() {
@@ -330,6 +335,8 @@ function quoteAdvisorPerfume(perfume) {
 function renderAdvisorResults(perfumes) {
     advisorQuiz.hidden = true;
     advisorResults.hidden = false;
+    advisorSection?.classList.remove("has-advisor-quiz");
+    advisorSection?.classList.add("has-advisor-results");
     advisorGrid.innerHTML = "";
 
     perfumes.forEach((perfume) => {
@@ -356,15 +363,9 @@ function renderAdvisorResults(perfumes) {
         advisorGrid.appendChild(card);
     });
 
-    advisorResults.scrollIntoView({ behavior: "smooth", block: "center" });
+    advisorResults.scrollTop = 0;
 }
 
 if (startAdvisor) startAdvisor.addEventListener("click", startAdvisorFlow);
 if (restartAdvisor) restartAdvisor.addEventListener("click", startAdvisorFlow);
-if (homeAdvisorUp) {
-    homeAdvisorUp.addEventListener("click", () => {
-        const advisorSection = document.getElementById("home-advisor");
-        if (advisorSection) advisorSection.scrollTo({ top: 0, behavior: "smooth" });
-    });
-}
 loadHomePerfumes();
